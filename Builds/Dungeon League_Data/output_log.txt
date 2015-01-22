@@ -1,0 +1,1802 @@
+Initialize engine version: 4.6.1f1 (d1db7a1b5196)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GT 630  (ID=0xfc2)
+    Vendor:   NVIDIA
+    VRAM:     1986 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.044 seconds
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\System.dll (this message is harmless)
+Profiler is only supported with Pro License
+ 
+(Filename: C:/BuildAgent/work/d63dfc6385190b60/Runtime/Profiler/ProfilerConnection.cpp Line: 218)
+
+Class: 0
+	 id: 0
+	 name: Scripts
+	 attack: 6
+	 defense: 7
+	 speed: 3
+Class: 1
+	 id: 1
+	 name: Scripts
+	 attack: 4
+	 defense: 10
+	 speed: 2
+Class: 2
+	 id: 2
+	 name: Scripts
+	 attack: 10
+	 defense: 5
+	 speed: 5
+
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateGameData:checkClasses() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:140)
+GenerateGameData:Start() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:47)
+ 
+(Filename: C Line: 0)
+
+Lord: 0
+	 id: 0
+	 name: Delaine Fortino
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 1
+	 id: 1
+	 name: Kaila Mutch
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 2
+	 id: 2
+	 name: Marco Milam
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 3
+Lord: 3
+	 id: 3
+	 name: Ashlee Squillace
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 4
+	 id: 4
+	 name: Katrice Ferro
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 6
+Lord: 5
+	 id: 5
+	 name: Caprice Whitlow
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 6
+	 id: 6
+	 name: Chauncey Brummett
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 7
+	 id: 7
+	 name: Edgardo Daniell
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 6
+Lord: 8
+	 id: 8
+	 name: Freida Esquivel
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 9
+	 id: 9
+	 name: Nikia Seaberg
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 3
+Lord: 10
+	 id: 10
+	 name: Ardath Risser
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 11
+	 id: 11
+	 name: Nick Parmley
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 4
+Lord: 12
+	 id: 12
+	 name: Consuelo Morganti
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 7
+Lord: 13
+	 id: 13
+	 name: Nikita Royce
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 14
+	 id: 14
+	 name: Gaylord Breeden
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 15
+	 id: 15
+	 name: Miguel Hulsey
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 16
+	 id: 16
+	 name: Otilia Cambell
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 17
+	 id: 17
+	 name: Thea Halfacre
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 18
+	 id: 18
+	 name: Roselyn Witkowski
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 19
+	 id: 19
+	 name: Renato Verrett
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 20
+	 id: 20
+	 name: Lorelei Stahr
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 21
+	 id: 21
+	 name: Precious Feiler
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 22
+	 id: 22
+	 name: Ethan Vandermolen
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 23
+	 id: 23
+	 name: Christina Hodges
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 24
+	 id: 24
+	 name: Rosemary Stumbaugh
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 6
+Lord: 25
+	 id: 25
+	 name: Ronald Ferdinand
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 5
+Lord: 26
+	 id: 26
+	 name: Alene Vanderbilt
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 4
+Lord: 27
+	 id: 27
+	 name: Jerri Gaitan
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 28
+	 id: 28
+	 name: Barbra Chatham
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 29
+	 id: 29
+	 name: Vonnie Crone
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 30
+	 id: 30
+	 name: Bea Kaylor
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 31
+	 id: 31
+	 name: Phil Philpott
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 3
+Lord: 32
+	 id: 32
+	 name: Edward Wrona
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 33
+	 id: 33
+	 name: Magdalena Kalis
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 34
+	 id: 34
+	 name: Easter Schacherer
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 35
+	 id: 35
+	 name: Paulette Defenbaugh
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 36
+	 id: 36
+	 name: Sadye Funari
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 37
+	 id: 37
+	 name: Newton Dicarlo
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 38
+	 id: 38
+	 name: Johanna Huntington
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 39
+	 id: 39
+	 name: Marina Bassler
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 40
+	 id: 40
+	 name: Tempie Holoman
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 41
+	 id: 41
+	 name: Georgetta Schwartz
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 2
+Lord: 42
+	 id: 42
+	 name: Carolann Dennie
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 43
+	 id: 43
+	 name: Drucilla Magdaleno
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 44
+	 id: 44
+	 name: Edmund Maresca
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 45
+	 id: 45
+	 name: Ellen Courts
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 46
+	 id: 46
+	 name: Kandace Currin
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 47
+	 id: 47
+	 name: Theresa Baughn
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 48
+	 id: 48
+	 name: Claude Fluellen
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 49
+	 id: 49
+	 name: Else Harryman
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 50
+	 id: 50
+	 name: Chassidy Luoma
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 2
+Lord: 51
+	 id: 51
+	 name: Chana Mercado
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 52
+	 id: 52
+	 name: Rosanne Maupin
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 53
+	 id: 53
+	 name: Dyan Enciso
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 2
+Lord: 54
+	 id: 54
+	 name: Qiana Odea
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 55
+	 id: 55
+	 name: Renetta Basco
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 56
+	 id: 56
+	 name: Carmelia Cogburn
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 57
+	 id: 57
+	 name: Mathilda Meinhardt
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 58
+	 id: 58
+	 name: Ezra Aguero
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 2
+Lord: 59
+	 id: 59
+	 name: Ardella Clouse
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 60
+	 id: 60
+	 name: Michelina Stonge
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 5
+Lord: 61
+	 id: 61
+	 name: Kiyoko Schempp
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 2
+Lord: 62
+	 id: 62
+	 name: Wynona Fannon
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 63
+	 id: 63
+	 name: Lita Orso
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 64
+	 id: 64
+	 name: Marjorie Levitan
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 5
+Lord: 65
+	 id: 65
+	 name: Claudio Glandon
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 66
+	 id: 66
+	 name: Jung Umstead
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 67
+	 id: 67
+	 name: Jestine Sipp
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 68
+	 id: 68
+	 name: Kandace Louis
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 5
+Lord: 69
+	 id: 69
+	 name: Antonio Manchester
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 70
+	 id: 70
+	 name: Marta Hennessee
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 71
+	 id: 71
+	 name: Harriet Rappaport
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 72
+	 id: 72
+	 name: Prudence Howarth
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 73
+	 id: 73
+	 name: Piper Goodlow
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 74
+	 id: 74
+	 name: Bronwyn Speights
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 75
+	 id: 75
+	 name: Gay Shryock
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 76
+	 id: 76
+	 name: Janina Philippe
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 77
+	 id: 77
+	 name: Deadra Pennebaker
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 78
+	 id: 78
+	 name: Liliana Gravitt
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 1
+Lord: 79
+	 id: 79
+	 name: Vernie Hockman
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 80
+	 id: 80
+	 name: Delphia Watters
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 7
+Lord: 81
+	 id: 81
+	 name: Gricelda Vazguez
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 82
+	 id: 82
+	 name: Dion Pesqueira
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 1
+Lord: 83
+	 id: 83
+	 name: Macie Reineke
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 84
+	 id: 84
+	 name: Renato Puleo
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 85
+	 id: 85
+	 name: Thad Marietta
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 86
+	 id: 86
+	 name: Lavette Taitt
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 87
+	 id: 87
+	 name: Kermit Bertin
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 88
+	 id: 88
+	 name: Tawna Goodnough
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 89
+	 id: 89
+	 name: Rosamaria Yerian
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 1
+Lord: 90
+	 id: 90
+	 name: Homer Kroenke
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 91
+	 id: 91
+	 name: Sterling Kappler
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 3
+Lord: 92
+	 id: 92
+	 name: Emory Scheid
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 93
+	 id: 93
+	 name: Vergie Leibowitz
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 94
+	 id: 94
+	 name: Glenn Shope
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 95
+	 id: 95
+	 name: Rufina Arbour
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 3
+Lord: 96
+	 id: 96
+	 name: Pennie Islam
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 97
+	 id: 97
+	 name: Mazie Pickford
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 98
+	 id: 98
+	 name: Sheron Reves
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 99
+	 id: 99
+	 name: Fiona Halley
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 7
+Lord: 100
+	 id: 100
+	 name: Quinn Montague
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 101
+	 id: 101
+	 name: Mistie Curtsinger
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 102
+	 id: 102
+	 name: Carlene Daughtridge
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 103
+	 id: 103
+	 name: Jung Mcfarlain
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 104
+	 id: 104
+	 name: Kary Peterkin
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 1
+Lord: 105
+	 id: 105
+	 name: Edith Richburg
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 106
+	 id: 106
+	 name: Donnetta Joshua
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 107
+	 id: 107
+	 name: Tawanna Situ
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 108
+	 id: 108
+	 name: Devora Creel
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 4
+Lord: 109
+	 id: 109
+	 name: Teodoro Fenton
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 110
+	 id: 110
+	 name: Jude Nesmith
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 111
+	 id: 111
+	 name: Rolanda Jorge
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 112
+	 id: 112
+	 name: Roger Nassar
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 1
+Lord: 113
+	 id: 113
+	 name: Ivory Fullam
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 114
+	 id: 114
+	 name: Michaela Vail
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 4
+Lord: 115
+	 id: 115
+	 name: Katharina Camberos
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 4
+Lord: 116
+	 id: 116
+	 name: Kellie Prevo
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 2
+Lord: 117
+	 id: 117
+	 name: Claretta Lamberti
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 118
+	 id: 118
+	 name: Flavia Carrasquillo
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 1
+Lord: 119
+	 id: 119
+	 name: Marlon Vancuren
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 120
+	 id: 120
+	 name: Amina Eilers
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 5
+Lord: 121
+	 id: 121
+	 name: Veola Marra
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 122
+	 id: 122
+	 name: Lilla Kantz
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 123
+	 id: 123
+	 name: Alecia Deveaux
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 124
+	 id: 124
+	 name: Vickey Bryer
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 125
+	 id: 125
+	 name: Lavada Brandy
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 126
+	 id: 126
+	 name: Allene Althouse
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 127
+	 id: 127
+	 name: Alyse Krogman
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 6
+Lord: 128
+	 id: 128
+	 name: Osvaldo Oquin
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 129
+	 id: 129
+	 name: Melvin Daves
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 130
+	 id: 130
+	 name: Courtney Swanger
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 131
+	 id: 131
+	 name: Cherry Hamer
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 6
+Lord: 132
+	 id: 132
+	 name: Bailey Longino
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 133
+	 id: 133
+	 name: Shirlene Stoneham
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 4
+Lord: 134
+	 id: 134
+	 name: Illa Deanda
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 135
+	 id: 135
+	 name: Patria Washburn
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 136
+	 id: 136
+	 name: Allan Leitner
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 137
+	 id: 137
+	 name: Norine Khalaf
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 138
+	 id: 138
+	 name: Luciano Rickards
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 139
+	 id: 139
+	 name: Shanti Weyandt
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 6
+Lord: 140
+	 id: 140
+	 name: Hubert Schlachter
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 141
+	 id: 141
+	 name: Despina Steller
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 142
+	 id: 142
+	 name: Sherilyn Mirando
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 143
+	 id: 143
+	 name: Sierra Cahall
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 144
+	 id: 144
+	 name: Dora Michael
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 3
+Lord: 145
+	 id: 145
+	 name: Cristin Pan
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 146
+	 id: 146
+	 name: Birgit Felter
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 5
+Lord: 147
+	 id: 147
+	 name: Apryl Ryba
+	 classid: Fighter
+	 level: 1
+	 attack: 6
+	 defense: 7
+	 speed: 3
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 148
+	 id: 148
+	 name: Dorotha Rosado
+	 classid: Defender
+	 level: 1
+	 attack: 4
+	 defense: 10
+	 speed: 2
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+Lord: 149
+	 id: 149
+	 name: Maisha Penrose
+	 classid: Rogue
+	 level: 1
+	 attack: 10
+	 defense: 5
+	 speed: 5
+	 exp: 0
+	 isavailable: True
+	 factionid: 0
+
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateGameData:checkLord() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:162)
+GenerateGameData:Start() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:48)
+ 
+(Filename: C Line: 0)
+
+Faction: 0
+	 id: 0
+	 name: Team 0
+	 isPlayerControlled: True
+	 lordNames: 
+		Harriet Rappaport, Rogue
+		Hubert Schlachter, Rogue
+		Carlene Daughtridge, Fighter
+		Apryl Ryba, Fighter
+		Sherilyn Mirando, Defender
+		Caprice Whitlow, Rogue
+Faction: 1
+	 id: 1
+	 name: Team 1
+	 isPlayerControlled: False
+	 lordNames: 
+		Liliana Gravitt, Fighter
+		Rosamaria Yerian, Rogue
+		Flavia Carrasquillo, Defender
+		Roger Nassar, Defender
+		Dion Pesqueira, Defender
+		Kary Peterkin, Rogue
+Faction: 2
+	 id: 2
+	 name: Team 3
+	 isPlayerControlled: False
+	 lordNames: 
+		Ezra Aguero, Defender
+		Dyan Enciso, Rogue
+		Kellie Prevo, Rogue
+		Chassidy Luoma, Rogue
+		Georgetta Schwartz, Rogue
+		Kiyoko Schempp, Defender
+Faction: 3
+	 id: 3
+	 name: Team 4
+	 isPlayerControlled: False
+	 lordNames: 
+		Rufina Arbour, Rogue
+		Dora Michael, Fighter
+		Marco Milam, Rogue
+		Nikia Seaberg, Fighter
+		Phil Philpott, Defender
+		Sterling Kappler, Defender
+Faction: 4
+	 id: 4
+	 name: Team 5
+	 isPlayerControlled: False
+	 lordNames: 
+		Nick Parmley, Rogue
+		Katharina Camberos, Defender
+		Alene Vanderbilt, Rogue
+		Shirlene Stoneham, Defender
+		Michaela Vail, Fighter
+		Devora Creel, Fighter
+Faction: 5
+	 id: 5
+	 name: Team 6
+	 isPlayerControlled: False
+	 lordNames: 
+		Birgit Felter, Rogue
+		Marjorie Levitan, Defender
+		Kandace Louis, Rogue
+		Michelina Stonge, Fighter
+		Ronald Ferdinand, Defender
+		Amina Eilers, Fighter
+Faction: 6
+	 id: 6
+	 name: Team 7
+	 isPlayerControlled: False
+	 lordNames: 
+		Shanti Weyandt, Defender
+		Alyse Krogman, Defender
+		Katrice Ferro, Defender
+		Edgardo Daniell, Defender
+		Rosemary Stumbaugh, Fighter
+		Cherry Hamer, Rogue
+Faction: 7
+	 id: 7
+	 name: test
+	 isPlayerControlled: False
+	 lordNames: 
+		Fiona Halley, Fighter
+		Delphia Watters, Rogue
+		Consuelo Morganti, Fighter
+
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+GenerateGameData:checkFactions() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:185)
+GenerateGameData:Start() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:49)
+ 
+(Filename: C Line: 0)
+
+Waiting for finish
