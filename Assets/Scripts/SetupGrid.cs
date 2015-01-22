@@ -77,7 +77,7 @@ public class SetupGrid : MonoBehaviour
 				Cell newSpriteCell = newSprite.AddComponent<Cell>();
 				newSpriteCell.path = new List<GameObject>();
 
-				if(row <= 1)
+				if(row <= 2 || col <= 0)
 				{
 					newSpriteCell.isInvalidSpace = true;
 				}
@@ -116,19 +116,19 @@ public class SetupGrid : MonoBehaviour
 		factionIDSide1 = factionID1;
 		factionIDSide2 = factionID2;
 
-		grid[2,2] = _gameData.factions[factionID1].positions[3];
-		grid[3,2] = _gameData.factions[factionID1].positions[4];
-		grid[4,2] = _gameData.factions[factionID1].positions[5];
-		grid[2,3] = _gameData.factions[factionID1].positions[0];
-		grid[3,3] = _gameData.factions[factionID1].positions[1];
-		grid[4,3] = _gameData.factions[factionID1].positions[2];
+		grid[4,2] = _gameData.factions[factionID1].positions[3];
+		grid[5,2] = _gameData.factions[factionID1].positions[4];
+		grid[6,2] = _gameData.factions[factionID1].positions[5];
+		grid[4,3] = _gameData.factions[factionID1].positions[0];
+		grid[5,3] = _gameData.factions[factionID1].positions[1];
+		grid[6,3] = _gameData.factions[factionID1].positions[2];
 		
-		grid[2,9] = _gameData.factions[factionID2].positions[3];
-		grid[3,9] = _gameData.factions[factionID2].positions[4];
-		grid[4,9] = _gameData.factions[factionID2].positions[5];
-		grid[2,8] = _gameData.factions[factionID2].positions[0];
-		grid[3,8] = _gameData.factions[factionID2].positions[1];
-		grid[4,8] = _gameData.factions[factionID2].positions[2];
+		grid[4,9] = _gameData.factions[factionID2].positions[3];
+		grid[5,9] = _gameData.factions[factionID2].positions[4];
+		grid[6,9] = _gameData.factions[factionID2].positions[5];
+		grid[4,8] = _gameData.factions[factionID2].positions[0];
+		grid[5,8] = _gameData.factions[factionID2].positions[1];
+		grid[6,8] = _gameData.factions[factionID2].positions[2];
 		
 		for(int col = 0; col < grid.GetLength (1); col++)
 		{
