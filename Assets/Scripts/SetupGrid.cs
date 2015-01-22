@@ -77,7 +77,7 @@ public class SetupGrid : MonoBehaviour
 				Cell newSpriteCell = newSprite.AddComponent<Cell>();
 				newSpriteCell.path = new List<GameObject>();
 
-				if(row <= 2 || col <= 0)
+				if(row <= 2 || col <= 0 || col >= 12)
 				{
 					newSpriteCell.isInvalidSpace = true;
 				}
