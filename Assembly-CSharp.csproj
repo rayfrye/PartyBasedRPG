@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Quest.cs" />
      <Compile Include="Assets\Scripts\ReadCSV.cs" />
      <Compile Include="Assets\Scripts\RunBattle.cs" />
+     <Compile Include="Assets\Scripts\RunOutsideOfBattle.cs" />
      <Compile Include="Assets\Scripts\SetupEncounterTypes.cs" />
      <Compile Include="Assets\Scripts\SetupEncounters.cs" />
      <Compile Include="Assets\Scripts\SetupFactions.cs" />

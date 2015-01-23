@@ -60,7 +60,6 @@ public class SetupGrid : MonoBehaviour
 				
 				SpriteRenderer newSpriteSpriteRenderer = newSprite.AddComponent<SpriteRenderer>();
 				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+level[row,col]);
-				//newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/walls/wall_stone");
 				newSpriteSpriteRenderer.sortingOrder = 0;
 
 				RectTransform newSpriteRectTransform = newSprite.AddComponent<RectTransform>();
@@ -285,6 +284,157 @@ public class SetupGrid : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	public GameObject putLordOnGrid(int lordID, int row, int col)
+	{
+		GameObject newPlayerBase = new GameObject();
+		newPlayerBase.transform.parent = cellContainer.transform;
+		newPlayerBase.name = _gameData.lords[lordID].lordName;
+		LordAvatar newPlayerBaseLordAvatar = newPlayerBase.AddComponent<LordAvatar>();
+		newPlayerBaseLordAvatar.lordID = lordID;
+		
+		RectTransform defaultCellRectTransform = GameObject.Find ("Cell"+row+","+col).GetComponent<RectTransform>(); 
+		
+		RectTransform playerRectTransform = newPlayerBase.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(1,1,1);
+		playerRectTransform.localPosition = 
+			new Vector3(
+				defaultCellRectTransform.localPosition.x
+				,defaultCellRectTransform.localPosition.y
+				,0);
+		
+		Rigidbody2D playerRigidBody = newPlayerBase.AddComponent<Rigidbody2D>();
+		playerRigidBody.gravityScale = 0;
+		
+		_gameData.lords[newPlayerBaseLordAvatar.lordID].currentRow = row;
+		_gameData.lords[newPlayerBaseLordAvatar.lordID].currentCol = col;
+		
+		GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().hasLord = true;
+		GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().lordID = lordID;
+		
+		
+		GameObject newPlayerBody = new GameObject();
+		newPlayerBody.name = newPlayerBase.name + "_body";
+		newPlayerBody.transform.parent = newPlayerBase.transform;
+		
+		CanvasRenderer _canvasRenderer = newPlayerBody.AddComponent<CanvasRenderer>();
+		SpriteRenderer _spriteRenderer = newPlayerBody.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 1;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerBody.AddComponent<Animator>();
+		newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_body_walk_south_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerBody.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerSkin = new GameObject();
+		newPlayerSkin.name = newPlayerBase.name + "_skin";
+		newPlayerSkin.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerSkin.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerSkin.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 1;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerSkin.AddComponent<Animator>();
+		newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_skin_walk_south_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerSkin.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerHair = new GameObject();
+		newPlayerHair.name = newPlayerBase.name + "_hair";
+		newPlayerHair.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerHair.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerHair.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 3;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerHair.AddComponent<Animator>();
+		newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_hair_walk_south_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerHair.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerEyes = new GameObject();
+		newPlayerEyes.name = newPlayerBase.name + "_eyes";
+		newPlayerEyes.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerEyes.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerEyes.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerEyes.AddComponent<Animator>();
+		newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_eyes_walk_south_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerEyes.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerShirt = new GameObject();
+		newPlayerShirt.name = newPlayerBase.name + "_shirt";
+		newPlayerShirt.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerShirt.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerShirt.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerShirt.AddComponent<Animator>();
+		newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shirt_walk_south_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerShirt.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerPants = new GameObject();
+		newPlayerPants.name = newPlayerBase.name + "_pants";
+		newPlayerPants.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerPants.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerPants.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerPants.AddComponent<Animator>();
+		newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_pants_walk_south_cont") as RuntimeAnimatorController;
+		
+		
+		
+		playerRectTransform = newPlayerPants.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerShoes = new GameObject();
+		newPlayerShoes.name = newPlayerBase.name + "_shoes";
+		newPlayerShoes.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerShoes.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerShoes.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerShoes.AddComponent<Animator>();
+		newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shoes_walk_south_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerShoes.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+
+		return newPlayerBase;
 	}
 	
 	public IEnumerator handleClick(int row, int col)
