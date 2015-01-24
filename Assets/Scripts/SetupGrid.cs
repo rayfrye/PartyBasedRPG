@@ -57,9 +57,9 @@ public class SetupGrid : MonoBehaviour
 				newSprite.tag = "Cell";
 				newSprite.AddComponent<CanvasRenderer>();
 				newSprite.transform.parent = cellContainer.transform;
-				
+
 				SpriteRenderer newSpriteSpriteRenderer = newSprite.AddComponent<SpriteRenderer>();
-				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+level[row,col]);
+				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"bg"));
 				//newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/floor_wood");
 				newSpriteSpriteRenderer.sortingOrder = 0;
 
@@ -110,6 +110,24 @@ public class SetupGrid : MonoBehaviour
 		}
 
 		GameObject.Destroy (cell);
+	}
+
+	public string getCellValue(string cellString, string cellType)
+	{
+		string s = "";
+
+		if(cellString.Length > 0)
+		{
+			int prefixIndexStart = cellString.IndexOf(cellType)+cellType.Length + 1;
+
+			string temp = cellString.Substring(prefixIndexStart);
+
+			int prefixIndexEnd = temp.IndexOf("|");
+
+			s = temp.Substring(0,prefixIndexEnd);
+		}
+
+		return s;
 	}
 	
 	public void putFactionsOnGrid(int factionID1, int factionID2, int rows, int cols)
