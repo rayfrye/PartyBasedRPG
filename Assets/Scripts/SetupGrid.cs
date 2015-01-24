@@ -59,7 +59,8 @@ public class SetupGrid : MonoBehaviour
 				newSprite.transform.parent = cellContainer.transform;
 				
 				SpriteRenderer newSpriteSpriteRenderer = newSprite.AddComponent<SpriteRenderer>();
-				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+level[row,col]);
+				//newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+level[row,col]);
+				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/floor_wood");
 				newSpriteSpriteRenderer.sortingOrder = 0;
 
 				RectTransform newSpriteRectTransform = newSprite.AddComponent<RectTransform>();
@@ -95,7 +96,8 @@ public class SetupGrid : MonoBehaviour
 				buttonRectTransform.localPosition = new Vector3(0,0,0);
 				
 				Image buttonImg = button.AddComponent<Image>();
-				buttonImg.color = new Color32(255,255,255,50);
+				buttonImg.color = new Color32(255,255,255,0);
+				//buttonImg.color = new Color32(255,255,255,50);
 				
 				Button buttonBtn = button.AddComponent<Button>();
 				buttonBtn.targetGraphic = buttonImg;
@@ -439,8 +441,12 @@ public class SetupGrid : MonoBehaviour
 	
 	public IEnumerator handleClick(int row, int col)
 	{
-		float waitTime = 2f;
-		StartCoroutine(_runBattle.handleClick(row,col));
+		float waitTime = 0f;
+
+		if(_runBattle)
+		{
+			StartCoroutine(_runBattle.handleClick(row,col));
+		}
 
 		yield return new WaitForSeconds(waitTime);
 	}

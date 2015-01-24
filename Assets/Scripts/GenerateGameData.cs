@@ -107,11 +107,12 @@ public class GenerateGameData : MonoBehaviour
 		_gameData.factions[factionID1].isPlayerControlled = true;
 		_setupGrid._gameData = _gameData;
 		_setupGrid._readCSV = _readCSV;
-		//_setupGrid._runBattle = _runBattle;
 		_setupGrid.objectScale = 3;
 		_setupGrid.cellSize = 16;
 		_setupGrid.getUIElements();
 		_setupGrid.makeGrid (rows,cols,"Stone Room.csv");
+
+		//_setupGrid._runBattle = _runBattle;
 		//_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
 
 //		_runBattle._transform = _transform;
