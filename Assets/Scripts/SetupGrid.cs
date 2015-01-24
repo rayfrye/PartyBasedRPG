@@ -59,8 +59,8 @@ public class SetupGrid : MonoBehaviour
 				newSprite.transform.parent = cellContainer.transform;
 				
 				SpriteRenderer newSpriteSpriteRenderer = newSprite.AddComponent<SpriteRenderer>();
-				//newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+level[row,col]);
-				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/floor_wood");
+				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+level[row,col]);
+				//newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/floor_wood");
 				newSpriteSpriteRenderer.sortingOrder = 0;
 
 				RectTransform newSpriteRectTransform = newSprite.AddComponent<RectTransform>();

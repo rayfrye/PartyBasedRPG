@@ -110,7 +110,7 @@ public class GenerateGameData : MonoBehaviour
 		_setupGrid.objectScale = 3;
 		_setupGrid.cellSize = 16;
 		_setupGrid.getUIElements();
-		_setupGrid.makeGrid (rows,cols,"Stone Room.csv");
+		_setupGrid.makeGrid (rows,cols,"woodtest.csv");
 
 		//_setupGrid._runBattle = _runBattle;
 		//_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
