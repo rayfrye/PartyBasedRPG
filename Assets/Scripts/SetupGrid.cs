@@ -91,6 +91,15 @@ public class SetupGrid : MonoBehaviour
 					newSpriteCell.isInvalidSpace = true;
 				}
 
+				if(level[row,col].Contains ("text"))
+				{
+					newSpriteCell.descText = getCellValue(level[row,col],"text");
+				}
+				else
+				{
+					newSpriteCell.descText = "";
+				}
+
 				if(level[row,col].Contains ("obj1"))
 				{
 					GameObject obj = new GameObject();
@@ -180,10 +189,18 @@ public class SetupGrid : MonoBehaviour
 				if(grid[row,col] != -1)
 				{
 					GameObject newPlayerBase = new GameObject();
+					GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+
 					newPlayerBase.transform.parent = cellContainer.transform;
-					newPlayerBase.name = _gameData.lords[grid[row,col]].lordName;
+					newPlayerBase.name = _gameData.lords[grid[row,col]].id.ToString ();
+
+					camera.transform.parent = newPlayerBase.transform;
+					camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
+					camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+
 					LordAvatar newPlayerBaseLordAvatar = newPlayerBase.AddComponent<LordAvatar>();
 					newPlayerBaseLordAvatar.lordID = grid[row,col];
+
 
 					RectTransform defaultCellRectTransform = GameObject.Find ("Cell"+row+","+col).GetComponent<RectTransform>(); 
 
@@ -198,8 +215,8 @@ public class SetupGrid : MonoBehaviour
 					Rigidbody2D playerRigidBody = newPlayerBase.AddComponent<Rigidbody2D>();
 					playerRigidBody.gravityScale = 0;
 
-					_gameData.lords[newPlayerBaseLordAvatar.lordID].currentRow = row;
-					_gameData.lords[newPlayerBaseLordAvatar.lordID].currentCol = col;
+					newPlayerBaseLordAvatar.row = row;
+					newPlayerBaseLordAvatar.col = col;
 
 					GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().hasLord = true;
 					GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().lordID = grid[row,col];
@@ -338,9 +355,10 @@ public class SetupGrid : MonoBehaviour
 		camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 
 		newPlayerBase.transform.parent = lordContainer.transform;
-		newPlayerBase.name = _gameData.lords[lordID].lordName;
+		newPlayerBase.name = _gameData.lords[lordID].id.ToString ();
 		LordAvatar newPlayerBaseLordAvatar = newPlayerBase.AddComponent<LordAvatar>();
 		newPlayerBaseLordAvatar.lordID = lordID;
+		newPlayerBaseLordAvatar.facingDir = "south";
 		
 		RectTransform defaultCellRectTransform = GameObject.Find ("Cell"+row+","+col).GetComponent<RectTransform>(); 
 		
@@ -355,8 +373,8 @@ public class SetupGrid : MonoBehaviour
 		Rigidbody2D playerRigidBody = newPlayerBase.AddComponent<Rigidbody2D>();
 		playerRigidBody.gravityScale = 0;
 		
-		_gameData.lords[newPlayerBaseLordAvatar.lordID].currentRow = row;
-		_gameData.lords[newPlayerBaseLordAvatar.lordID].currentCol = col;
+		newPlayerBaseLordAvatar.row = row;
+		newPlayerBaseLordAvatar.col = col;
 		
 		GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().hasLord = true;
 		GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().lordID = lordID;

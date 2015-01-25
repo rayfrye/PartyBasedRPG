@@ -21,7 +21,4 @@ public class Lord : MonoBehaviour
 	public int raceid;
 	public Sprite sprite;
 	public int factionID;
-
-	public int currentRow;
-	public int currentCol;
 }

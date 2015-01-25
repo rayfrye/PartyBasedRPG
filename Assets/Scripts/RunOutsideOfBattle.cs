@@ -20,7 +20,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 
 	#region UI
 	public GameObject Canvas;
-	public GameObject DialgoueText;
+	public Text DialogueText;
 	public GameObject Dialogue;
 
 
@@ -31,7 +31,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 	{
 		Canvas = GameObject.Find ("Canvas");
 		Dialogue = GameObject.Find ("Dialogue");
-		DialgoueText = GameObject.Find ("Dialogue Text");
+		DialogueText = GameObject.Find ("Dialogue Text").GetComponent<Text>();
 
 		Dialogue.SetActive (false);
 	}
@@ -39,11 +39,6 @@ public class RunOutsideOfBattle : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(isInteracting)
-		{
-			interact();
-		}
-		
 		if(!isMoving)
 		{
 			input();
@@ -51,7 +46,12 @@ public class RunOutsideOfBattle : MonoBehaviour
 
 		if(path.Count > 0 && !isInteracting)
 		{
-			moveLord(getCurrentLord());
+			moveLord(getCurrentLord(),getCurrentLordAvatar());
+		}
+
+		if(isInteracting)
+		{
+			interact();
 		}
 	}
 
@@ -60,25 +60,19 @@ public class RunOutsideOfBattle : MonoBehaviour
 		if(Input.GetKeyUp(KeyCode.E))
 		{
 			isInteracting = !isInteracting;
-
-			if(isInteracting)
-			{
-				Dialogue.SetActive(true);
-			}
-			else
-			{
-				Dialogue.SetActive(false);
-			}
+			Dialogue.SetActive(false);
 		}
 
 		if(!isInteracting)
 		{
 			if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
 			{
-				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
+				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
+				tempAvatar.facingDir = "east";
+				Lord tempLord = _gameData.lords[tempAvatar.lordID];
 				
-				int row = tempLord.currentRow;
-				int col = tempLord.currentCol;
+				int row = tempAvatar.row;
+				int col = tempAvatar.col;
 
 				GameObject node = GameObject.Find ("Cell" + (row) + "," + (col + 1));
 
@@ -98,10 +92,12 @@ public class RunOutsideOfBattle : MonoBehaviour
 
 			if(!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
-				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
-				
-				int row = tempLord.currentRow;
-				int col = tempLord.currentCol;
+				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
+				tempAvatar.facingDir = "west";
+				Lord tempLord = _gameData.lords[tempAvatar.lordID];
+
+				int row = tempAvatar.row;
+				int col = tempAvatar.col;
 
 				GameObject node = GameObject.Find ("Cell" + (row) + "," + (col - 1));
 
@@ -121,10 +117,12 @@ public class RunOutsideOfBattle : MonoBehaviour
 
 			if(Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
-				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
-				
-				int row = tempLord.currentRow;
-				int col = tempLord.currentCol;
+				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
+				tempAvatar.facingDir = "north";
+				Lord tempLord = _gameData.lords[tempAvatar.lordID];
+
+				int row = tempAvatar.row;
+				int col = tempAvatar.col;
 
 				GameObject node = GameObject.Find ("Cell" + (row - 1) + "," + (col));
 
@@ -144,10 +142,12 @@ public class RunOutsideOfBattle : MonoBehaviour
 
 			if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
-				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
-				
-				int row = tempLord.currentRow;
-				int col = tempLord.currentCol;
+				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
+				tempAvatar.facingDir = "south";
+				Lord tempLord = _gameData.lords[tempAvatar.lordID];
+
+				int row = tempAvatar.row;
+				int col = tempAvatar.col;
 
 				GameObject node = GameObject.Find ("Cell" + (row + 1) + "," + (col));
 
@@ -167,19 +167,116 @@ public class RunOutsideOfBattle : MonoBehaviour
 		}
 	}
 
+	public void closeDialogue()
+	{
+		Dialogue.SetActive(false);
+	}
+
 	public void interact()
 	{
-		//Dialogue.SetActive(false);
+		LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
+		int row = tempAvatar.row;
+		int col = tempAvatar.col;
+
+		switch(tempAvatar.facingDir)
+		{
+		case "north":
+		{
+			GameObject node = GameObject.Find ("Cell" + (row - 1) + "," + (col));
+
+			if(node)
+			{
+				Cell nodeCell = node.GetComponent<Cell>();
+
+				interactWithCell (nodeCell);
+			}
+
+			break;
+		}
+		case "west":
+		{
+			GameObject node = GameObject.Find ("Cell" + (row) + "," + (col - 1));
+			
+			if(node)
+			{
+				Cell nodeCell = node.GetComponent<Cell>();
+				
+				interactWithCell (nodeCell);
+			}
+			
+			break;
+		}
+		case "south":
+		{
+			GameObject node = GameObject.Find ("Cell" + (row + 1) + "," + (col));
+			
+			if(node)
+			{
+				Cell nodeCell = node.GetComponent<Cell>();
+				
+				interactWithCell (nodeCell);
+			}
+			
+			break;
+		}
+		case "east":
+		{
+			GameObject node = GameObject.Find ("Cell" + (row) + "," + (col + 1));
+			
+			if(node)
+			{
+				Cell nodeCell = node.GetComponent<Cell>();
+				
+				interactWithCell (nodeCell);
+			}
+			
+			break;
+		}
+		default:
+		{
+
+			break;
+		}
+		}
+	}
+
+	public void interactWithCell(Cell nodeCell)
+	{
+		if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+		{
+			isInteracting = false;
+			closeDialogue();
+		}
+
+		if(nodeCell.isInvalidSpace)
+		{
+			if(nodeCell.descText.Length > 0)
+			{
+				DialogueText.text = nodeCell.descText;
+				Dialogue.SetActive(true);
+			}
+			else
+			{
+				isInteracting = false;
+				closeDialogue();
+			}
+		}
+
+		if(nodeCell.hasLord)
+		{
+			DialogueText.text = nodeCell.descText;
+			Dialogue.SetActive(true);
+		}
 	}
 	
-	public void moveLord(Lord lord)
+	public void moveLord(Lord lord, LordAvatar lordAvatar)
 	{
 		GameObject newCell = GameObject.Find ("Cell" + path[path.Count-1].GetComponent<Cell>().row + "," + path[path.Count-1].GetComponent<Cell>().col);
-		GameObject oldCell = GameObject.Find ("Cell" + lord.currentRow + "," + lord.currentCol);
+		GameObject oldCell = GameObject.Find ("Cell" + lordAvatar.row + "," + lordAvatar.col);
 		
 		if(newCell != oldCell)
 		{
-			moveAlongPath (GameObject.Find (lord.lordName), path);
+			moveAlongPath (GameObject.Find (lord.id.ToString ()), path, getCurrentLordAvatar());
 			
 			newCell.GetComponent<Cell>().lordID = lord.id;
 			
@@ -190,7 +287,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 		}
 	}
 
-	void moveAlongPath(GameObject player, List<GameObject> path)
+	void moveAlongPath(GameObject player, List<GameObject> path, LordAvatar lordAvatar)
 	{
 		if(currentNodeInPath < path.Count)
 		{
@@ -202,8 +299,8 @@ public class RunOutsideOfBattle : MonoBehaviour
 			if(xDistance == 0 && yDistance == 0)
 			{
 				player.GetComponent<RectTransform>().localPosition = path[currentNodeInPath].GetComponent<RectTransform>().localPosition;
-				_gameData.lords[player.GetComponent<LordAvatar>().lordID].currentRow = path[currentNodeInPath].GetComponent<Cell>().row;
-				_gameData.lords[player.GetComponent<LordAvatar>().lordID].currentCol = path[currentNodeInPath].GetComponent<Cell>().col;
+				lordAvatar.row = path[currentNodeInPath].GetComponent<Cell>().row;
+				lordAvatar.col = path[currentNodeInPath].GetComponent<Cell>().col;
 				player.rigidbody2D.velocity = new Vector2(0,0);
 				currentNodeInPath++;
 			}
@@ -212,10 +309,10 @@ public class RunOutsideOfBattle : MonoBehaviour
 		if(currentNodeInPath == path.Count)
 		{
 			isMoving = false;
-			GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol).GetComponent<Cell>().hasLord = false;
-			getCurrentLord().currentRow = path[path.Count-1].GetComponent<Cell>().row;
-			getCurrentLord().currentCol = path[path.Count-1].GetComponent<Cell>().col;
-			GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol).GetComponent<Cell>().hasLord = true;
+			GameObject.Find ("Cell"+lordAvatar.row+","+lordAvatar.col).GetComponent<Cell>().hasLord = false;
+			lordAvatar.row = path[path.Count-1].GetComponent<Cell>().row;
+			lordAvatar.col = path[path.Count-1].GetComponent<Cell>().col;
+			GameObject.Find ("Cell"+lordAvatar.row+","+lordAvatar.col).GetComponent<Cell>().hasLord = true;
 			path.Clear ();
 		}
 	}
@@ -224,8 +321,9 @@ public class RunOutsideOfBattle : MonoBehaviour
 	{
 		bool isHorizontalMovement;
 		Lord playerLord = getCurrentLord();
+		LordAvatar lordAvatar = getCurrentLordAvatar();
 		
-		if(playerLord.currentRow == destination.GetComponent<Cell>().row)
+		if(lordAvatar.row == destination.GetComponent<Cell>().row)
 		{
 			isHorizontalMovement = true;
 		}
@@ -277,9 +375,14 @@ public class RunOutsideOfBattle : MonoBehaviour
 			}
 		}
 	}
-
+	
 	public Lord getCurrentLord()
 	{
 		return _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
+	}
+
+	public LordAvatar getCurrentLordAvatar()
+	{
+		return targetLord.GetComponent<LordAvatar>();
 	}
 }

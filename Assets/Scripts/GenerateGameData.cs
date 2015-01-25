@@ -112,8 +112,8 @@ public class GenerateGameData : MonoBehaviour
 		_setupGrid.getUIElements();
 		_setupGrid.makeGrid (rows,cols,"woodtest.csv");
 
-		//_setupGrid._runBattle = _runBattle;
-		//_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
+//		_setupGrid._runBattle = _runBattle;
+//		_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
 
 //		_runBattle._transform = _transform;
 //		_runBattle._gameData = _gameData;
