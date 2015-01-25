@@ -51,9 +51,8 @@ public class RunBattle : MonoBehaviour
 	#region UI
 	public GameObject Canvas;
 	public GameObject cell;
-	public GameObject cellContainer;
 	public GameObject endTurnButton;
-	
+
 	public Font arial;
 	#endregion UI
 
@@ -61,7 +60,6 @@ public class RunBattle : MonoBehaviour
 	{
 		Canvas = GameObject.Find ("Canvas");
 		cell = GameObject.Find ("Cell");
-		cellContainer = GameObject.Find ("Cell Container");
 		endTurnButton = GameObject.Find ("End Turn Button");
 
 		c_possibleMovementSpaceBlue = new Color32(92,131,223,150);

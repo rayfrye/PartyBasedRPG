@@ -26,7 +26,11 @@ public class SetupGrid : MonoBehaviour
 	public GameObject Canvas;
 	public GameObject cell;
 	public GameObject cellContainer;
+	public GameObject lordContainer;
+	public GameObject endTurnButton;
 
+	
+	
 	public Font arial;
 	#endregion UI
 
@@ -39,6 +43,11 @@ public class SetupGrid : MonoBehaviour
 		Canvas = GameObject.Find ("Canvas");
 		cell = GameObject.Find ("Cell");
 		cellContainer = GameObject.Find ("Cell Container");
+		lordContainer = GameObject.Find ("Lord Container");
+		endTurnButton = GameObject.Find ("End Turn Button");
+
+		
+		
 	}
 
 	public void makeGrid(int rows, int cols, string gridName)
@@ -77,10 +86,25 @@ public class SetupGrid : MonoBehaviour
 				Cell newSpriteCell = newSprite.AddComponent<Cell>();
 				newSpriteCell.path = new List<GameObject>();
 
-				if(row <= 2 || col <= 0 || col >= 12)
+				if(getCellValue(level[row,col],"isInvalidSpace") == "true")
 				{
 					newSpriteCell.isInvalidSpace = true;
 				}
+
+				if(level[row,col].Contains ("obj1"))
+				{
+					GameObject obj = new GameObject();
+					obj.transform.parent = newSprite.transform;
+					SpriteRenderer objSpriteRenderer = obj.AddComponent<SpriteRenderer>();
+					objSpriteRenderer.sortingOrder = 1;
+					objSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"obj1"));
+
+					RectTransform objRectTransform = obj.AddComponent<RectTransform>();
+					objRectTransform.localScale = new Vector3(1,1,1);
+					objRectTransform.sizeDelta = new Vector3(cellSize,cellSize,1);
+					objRectTransform.localPosition = new Vector3(0,0,0);
+				}
+
 
 				newSpriteCell.row = row;
 				newSpriteCell.col = col;
@@ -116,7 +140,7 @@ public class SetupGrid : MonoBehaviour
 	{
 		string s = "";
 
-		if(cellString.Length > 0)
+		if(cellString.Length > 0 && cellString.Contains (cellType))
 		{
 			int prefixIndexStart = cellString.IndexOf(cellType)+cellType.Length + 1;
 
@@ -300,7 +324,6 @@ public class SetupGrid : MonoBehaviour
 					playerRectTransform = newPlayerShoes.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
 					playerRectTransform.localPosition = new Vector3(0,0,0);
-					
 				}
 			}
 		}
@@ -309,7 +332,12 @@ public class SetupGrid : MonoBehaviour
 	public GameObject putLordOnGrid(int lordID, int row, int col)
 	{
 		GameObject newPlayerBase = new GameObject();
-		newPlayerBase.transform.parent = cellContainer.transform;
+		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+		camera.transform.parent = newPlayerBase.transform;
+		camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
+		camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+
+		newPlayerBase.transform.parent = lordContainer.transform;
 		newPlayerBase.name = _gameData.lords[lordID].lordName;
 		LordAvatar newPlayerBaseLordAvatar = newPlayerBase.AddComponent<LordAvatar>();
 		newPlayerBaseLordAvatar.lordID = lordID;

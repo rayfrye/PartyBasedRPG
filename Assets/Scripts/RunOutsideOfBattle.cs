@@ -14,127 +14,164 @@ public class RunOutsideOfBattle : MonoBehaviour
 	public GameObject targetLord;
 
 	public bool isMoving = false;
+	public bool isInteracting = false;
 	public int currentNodeInPath = 0;
 	public List<GameObject> path = new List<GameObject>();
 
+	#region UI
+	public GameObject Canvas;
+	public GameObject DialgoueText;
+	public GameObject Dialogue;
+
+
+	public Font arial;
+	#endregion UI
+
+	public void getUIElements()
+	{
+		Canvas = GameObject.Find ("Canvas");
+		Dialogue = GameObject.Find ("Dialogue");
+		DialgoueText = GameObject.Find ("Dialogue Text");
+
+		Dialogue.SetActive (false);
+	}
+	
 	// Update is called once per frame
 	void Update ()
 	{
-//		if(isMoving)
-//		{
-//			moveLord(getCurrentLord(),3,4);
-//		}
-//		else
-//		{
-//			directionalInput();
-//		}
-
+		if(isInteracting)
+		{
+			interact();
+		}
+		
 		if(!isMoving)
 		{
-			directionalInput();
+			input();
 		}
 
-		if(path.Count > 0)
+		if(path.Count > 0 && !isInteracting)
 		{
 			moveLord(getCurrentLord());
 		}
 	}
 
-	public void directionalInput()
+	public void input()
 	{
-		if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
+		if(Input.GetKeyUp(KeyCode.E))
 		{
-			Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
-			
-			int row = tempLord.currentRow;
-			int col = tempLord.currentCol;
+			isInteracting = !isInteracting;
 
-			GameObject node = GameObject.Find ("Cell" + (row) + "," + (col + 1));
-
-			if(node)
+			if(isInteracting)
 			{
-				Cell nodeCell = node.GetComponent<Cell>();
-
-				if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
-				{
-					currentNodeInPath = 0;
-
-					path.Add (node);
-					isMoving = true;
-				}
+				Dialogue.SetActive(true);
+			}
+			else
+			{
+				Dialogue.SetActive(false);
 			}
 		}
 
-		if(!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+		if(!isInteracting)
 		{
-			Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
-			
-			int row = tempLord.currentRow;
-			int col = tempLord.currentCol;
-
-			GameObject node = GameObject.Find ("Cell" + (row) + "," + (col - 1));
-
-			if(node)
+			if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
 			{
-				Cell nodeCell = node.GetComponent<Cell>();
+				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
 				
-				if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+				int row = tempLord.currentRow;
+				int col = tempLord.currentCol;
+
+				GameObject node = GameObject.Find ("Cell" + (row) + "," + (col + 1));
+
+				if(node)
 				{
-					currentNodeInPath = 0;
-					
-					path.Add (node);
-					isMoving = true;
+					Cell nodeCell = node.GetComponent<Cell>();
+
+					if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+					{
+						currentNodeInPath = 0;
+
+						path.Add (node);
+						isMoving = true;
+					}
 				}
 			}
-		}
 
-		if(Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
-		{
-			Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
-			
-			int row = tempLord.currentRow;
-			int col = tempLord.currentCol;
-
-			GameObject node = GameObject.Find ("Cell" + (row - 1) + "," + (col));
-
-			if(node)
+			if(!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
-				Cell nodeCell = node.GetComponent<Cell>();
+				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
+				
+				int row = tempLord.currentRow;
+				int col = tempLord.currentCol;
 
-				if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+				GameObject node = GameObject.Find ("Cell" + (row) + "," + (col - 1));
+
+				if(node)
 				{
-					currentNodeInPath = 0;
-									
-					path.Add (node);
-					isMoving = true;
+					Cell nodeCell = node.GetComponent<Cell>();
+					
+					if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+					{
+						currentNodeInPath = 0;
+						
+						path.Add (node);
+						isMoving = true;
+					}
 				}
 			}
-		}
 
-		if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
-		{
-			Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
-			
-			int row = tempLord.currentRow;
-			int col = tempLord.currentCol;
-
-			GameObject node = GameObject.Find ("Cell" + (row + 1) + "," + (col));
-
-			if(node)
+			if(Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
-				Cell nodeCell = node.GetComponent<Cell>();
+				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
+				
+				int row = tempLord.currentRow;
+				int col = tempLord.currentCol;
 
-				if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+				GameObject node = GameObject.Find ("Cell" + (row - 1) + "," + (col));
+
+				if(node)
 				{
-					currentNodeInPath = 0;
-					
-					path.Add (node);
-					isMoving = true;
+					Cell nodeCell = node.GetComponent<Cell>();
+
+					if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+					{
+						currentNodeInPath = 0;
+										
+						path.Add (node);
+						isMoving = true;
+					}
+				}
+			}
+
+			if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+			{
+				Lord tempLord = _gameData.lords[targetLord.GetComponent<LordAvatar>().lordID];
+				
+				int row = tempLord.currentRow;
+				int col = tempLord.currentCol;
+
+				GameObject node = GameObject.Find ("Cell" + (row + 1) + "," + (col));
+
+				if(node)
+				{
+					Cell nodeCell = node.GetComponent<Cell>();
+
+					if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
+					{
+						currentNodeInPath = 0;
+						
+						path.Add (node);
+						isMoving = true;
+					}
 				}
 			}
 		}
 	}
 
+	public void interact()
+	{
+		//Dialogue.SetActive(false);
+	}
+	
 	public void moveLord(Lord lord)
 	{
 		GameObject newCell = GameObject.Find ("Cell" + path[path.Count-1].GetComponent<Cell>().row + "," + path[path.Count-1].GetComponent<Cell>().col);
@@ -157,7 +194,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 	{
 		if(currentNodeInPath < path.Count)
 		{
-			move (player,path[currentNodeInPath],1f);
+			move (player,path[currentNodeInPath],2f);
 			
 			int xDistance = (int) (player.GetComponent<RectTransform>().localPosition.x - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.x);
 			int yDistance = (int) (player.GetComponent<RectTransform>().localPosition.y - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.y);

@@ -127,6 +127,7 @@ public class GenerateGameData : MonoBehaviour
 		_runOutsideOfBattle._transform = _transform;
 		_runOutsideOfBattle._gameData = _gameData;
 		_runOutsideOfBattle._setupGrid = _setupGrid;
+		_runOutsideOfBattle.getUIElements();
 		_runOutsideOfBattle.targetLord = _setupGrid.putLordOnGrid(0,3,3);
 
 	}
