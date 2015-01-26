@@ -232,7 +232,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerBody.AddComponent<Animator>();
-					newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_body_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_body_walk_east_cont") as RuntimeAnimatorController;
 					
 					playerRectTransform = newPlayerBody.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -249,7 +249,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 
 					newPlayerSkin.AddComponent<Animator>();
-					newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_skin_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_skin_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerSkin.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -266,7 +266,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 
 					newPlayerHair.AddComponent<Animator>();
-					newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_hair_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_hair_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerHair.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -283,7 +283,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 
 					newPlayerEyes.AddComponent<Animator>();
-					newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_eyes_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_eyes_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerEyes.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -300,7 +300,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerShirt.AddComponent<Animator>();
-					newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shirt_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shirt_walk_east_cont") as RuntimeAnimatorController;
 					
 					playerRectTransform = newPlayerShirt.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -317,7 +317,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerPants.AddComponent<Animator>();
-					newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_pants_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_pants_walk_east_cont") as RuntimeAnimatorController;
 
 
 
@@ -336,7 +336,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerShoes.AddComponent<Animator>();
-					newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shoes_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shoes_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerShoes.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -358,7 +358,7 @@ public class SetupGrid : MonoBehaviour
 		newPlayerBase.name = _gameData.lords[lordID].id.ToString ();
 		LordAvatar newPlayerBaseLordAvatar = newPlayerBase.AddComponent<LordAvatar>();
 		newPlayerBaseLordAvatar.lordID = lordID;
-		newPlayerBaseLordAvatar.facingDir = "south";
+		newPlayerBaseLordAvatar.facingDir = "east";
 		
 		RectTransform defaultCellRectTransform = GameObject.Find ("Cell"+row+","+col).GetComponent<RectTransform>(); 
 		
@@ -390,7 +390,7 @@ public class SetupGrid : MonoBehaviour
 		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 		
 		newPlayerBody.AddComponent<Animator>();
-		newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_body_walk_south_cont") as RuntimeAnimatorController;
+		newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_body_walk_east_cont") as RuntimeAnimatorController;
 		
 		playerRectTransform = newPlayerBody.AddComponent<RectTransform>();
 		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -407,7 +407,7 @@ public class SetupGrid : MonoBehaviour
 		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 		
 		newPlayerSkin.AddComponent<Animator>();
-		newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_skin_walk_south_cont") as RuntimeAnimatorController;
+		newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_skin_walk_east_cont") as RuntimeAnimatorController;
 		
 		playerRectTransform = newPlayerSkin.AddComponent<RectTransform>();
 		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -424,7 +424,7 @@ public class SetupGrid : MonoBehaviour
 		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 		
 		newPlayerHair.AddComponent<Animator>();
-		newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_hair_walk_south_cont") as RuntimeAnimatorController;
+		newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_hair_walk_east_cont") as RuntimeAnimatorController;
 		
 		playerRectTransform = newPlayerHair.AddComponent<RectTransform>();
 		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -441,7 +441,7 @@ public class SetupGrid : MonoBehaviour
 		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 		
 		newPlayerEyes.AddComponent<Animator>();
-		newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_eyes_walk_south_cont") as RuntimeAnimatorController;
+		newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_eyes_walk_east_cont") as RuntimeAnimatorController;
 		
 		playerRectTransform = newPlayerEyes.AddComponent<RectTransform>();
 		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -458,7 +458,7 @@ public class SetupGrid : MonoBehaviour
 		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 		
 		newPlayerShirt.AddComponent<Animator>();
-		newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shirt_walk_south_cont") as RuntimeAnimatorController;
+		newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shirt_walk_east_cont") as RuntimeAnimatorController;
 		
 		playerRectTransform = newPlayerShirt.AddComponent<RectTransform>();
 		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -475,7 +475,7 @@ public class SetupGrid : MonoBehaviour
 		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 		
 		newPlayerPants.AddComponent<Animator>();
-		newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_pants_walk_south_cont") as RuntimeAnimatorController;
+		newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_pants_walk_east_cont") as RuntimeAnimatorController;
 		
 		
 		
@@ -494,7 +494,7 @@ public class SetupGrid : MonoBehaviour
 		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 		
 		newPlayerShoes.AddComponent<Animator>();
-		newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shoes_walk_south_cont") as RuntimeAnimatorController;
+		newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shoes_walk_east_cont") as RuntimeAnimatorController;
 		
 		playerRectTransform = newPlayerShoes.AddComponent<RectTransform>();
 		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);

@@ -68,7 +68,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.D))
 			{
 				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
-				tempAvatar.facingDir = "east";
+				setFacingDir(tempAvatar,"east");
 				Lord tempLord = _gameData.lords[tempAvatar.lordID];
 				
 				int row = tempAvatar.row;
@@ -93,7 +93,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			if(!Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
 				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
-				tempAvatar.facingDir = "west";
+				setFacingDir(tempAvatar,"west");
 				Lord tempLord = _gameData.lords[tempAvatar.lordID];
 
 				int row = tempAvatar.row;
@@ -118,7 +118,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			if(Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
 				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
-				tempAvatar.facingDir = "north";
+				setFacingDir(tempAvatar,"north");
 				Lord tempLord = _gameData.lords[tempAvatar.lordID];
 
 				int row = tempAvatar.row;
@@ -143,7 +143,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			if(!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
 			{
 				LordAvatar tempAvatar = targetLord.GetComponent<LordAvatar>();
-				tempAvatar.facingDir = "south";
+				setFacingDir(tempAvatar,"south");
 				Lord tempLord = _gameData.lords[tempAvatar.lordID];
 
 				int row = tempAvatar.row;
@@ -165,6 +165,19 @@ public class RunOutsideOfBattle : MonoBehaviour
 				}
 			}
 		}
+	}
+
+	public void setFacingDir(LordAvatar lordAvatar, string dir)
+	{
+		lordAvatar.facingDir = dir;
+		lordAvatar.transform.FindChild(lordAvatar.name + "_body").transform.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/" + dir + "/anims/human_body_walk_" + dir + "_cont") as RuntimeAnimatorController;
+		lordAvatar.transform.FindChild(lordAvatar.name + "_skin").transform.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/" + dir + "/anims/human_skin_walk_" + dir + "_cont") as RuntimeAnimatorController;
+		lordAvatar.transform.FindChild(lordAvatar.name + "_hair").transform.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/" + dir + "/anims/human_hair_walk_" + dir + "_cont") as RuntimeAnimatorController;
+		lordAvatar.transform.FindChild(lordAvatar.name + "_eyes").transform.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/" + dir + "/anims/human_eyes_walk_" + dir + "_cont") as RuntimeAnimatorController;
+		lordAvatar.transform.FindChild(lordAvatar.name + "_shirt").transform.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/" + dir + "/anims/human_shirt_walk_" + dir + "_cont") as RuntimeAnimatorController;
+		lordAvatar.transform.FindChild(lordAvatar.name + "_pants").transform.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/" + dir + "/anims/human_pants_walk_" + dir + "_cont") as RuntimeAnimatorController;
+		lordAvatar.transform.FindChild(lordAvatar.name + "_shoes").transform.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/" + dir + "/anims/human_shoes_walk_" + dir + "_cont") as RuntimeAnimatorController;
+		
 	}
 
 	public void closeDialogue()
