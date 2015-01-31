@@ -33,4 +33,8 @@ public class GameData : MonoBehaviour
 	public Dictionary<int,Faction> factions = new Dictionary<int,Faction>();
 	#endregion factions
 
+	#region dialogues
+	public Dictionary<int,Dialogue> dialogues = new Dictionary<int,Dialogue>();
+	#endregion dialogues
+
 }

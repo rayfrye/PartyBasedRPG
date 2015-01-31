@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 42f421226b8d782499b3f2de7814e616
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: floor_stone
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

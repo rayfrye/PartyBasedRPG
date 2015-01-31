@@ -1,12 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Camera Scripts\CameraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RunOutsideOfBattle.cs">
     <Files>
-      <File FileName="Assets\Scripts\GenerateGameData.cs" Line="127" Column="47" />
-      <File FileName="Assets\Scripts\SetupGrid.cs" Line="353" Column="1" />
-      <File FileName="Assets\Scripts\RunBattle.cs" Line="7" Column="1" />
-      <File FileName="Assets\Scripts\RunOutsideOfBattle.cs" Line="20" Column="2" />
-      <File FileName="Assets\Scripts\Camera Scripts\CameraController.cs" Line="67" Column="1" />
+      <File FileName="Assets\Scripts\GenerateGameData.cs" Line="119" Column="34" />
+      <File FileName="Assets\Scripts\SetupGrid.cs" Line="404" Column="36" />
+      <File FileName="Assets\Scripts\SetupDialogues.cs" Line="32" Column="3" />
+      <File FileName="Assets\Scripts\RunOutsideOfBattle.cs" Line="271" Column="22" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

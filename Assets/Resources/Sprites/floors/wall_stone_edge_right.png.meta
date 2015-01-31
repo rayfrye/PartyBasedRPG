@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: 89bdc30fe59e2c14db5b970d76b13ca7
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: wall_stone_edge_right
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

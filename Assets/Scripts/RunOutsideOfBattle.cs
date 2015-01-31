@@ -39,7 +39,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		if(!isMoving)
+		if(!isMoving && !isInteracting)
 		{
 			input();
 		}
@@ -59,8 +59,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 	{
 		if(Input.GetKeyUp(KeyCode.E))
 		{
-			isInteracting = !isInteracting;
-			Dialogue.SetActive(false);
+			isInteracting = true;
 		}
 
 		if(!isInteracting)
@@ -183,6 +182,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 	public void closeDialogue()
 	{
 		Dialogue.SetActive(false);
+		isInteracting = false;
 	}
 
 	public void interact()
@@ -201,7 +201,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			{
 				Cell nodeCell = node.GetComponent<Cell>();
 
-				interactWithCell (nodeCell);
+				interactWithCell (nodeCell, "north", "south");
 			}
 
 			break;
@@ -214,7 +214,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			{
 				Cell nodeCell = node.GetComponent<Cell>();
 				
-				interactWithCell (nodeCell);
+				interactWithCell (nodeCell, "west", "east");
 			}
 			
 			break;
@@ -227,7 +227,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			{
 				Cell nodeCell = node.GetComponent<Cell>();
 				
-				interactWithCell (nodeCell);
+				interactWithCell (nodeCell, "south", "north");
 			}
 			
 			break;
@@ -240,7 +240,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			{
 				Cell nodeCell = node.GetComponent<Cell>();
 				
-				interactWithCell (nodeCell);
+				interactWithCell (nodeCell, "east", "west");
 			}
 			
 			break;
@@ -253,11 +253,10 @@ public class RunOutsideOfBattle : MonoBehaviour
 		}
 	}
 
-	public void interactWithCell(Cell nodeCell)
+	public void interactWithCell(Cell nodeCell, string dir, string oppdir)
 	{
 		if(!nodeCell.isInvalidSpace && !nodeCell.hasLord)
 		{
-			isInteracting = false;
 			closeDialogue();
 		}
 
@@ -267,21 +266,41 @@ public class RunOutsideOfBattle : MonoBehaviour
 			{
 				DialogueText.text = nodeCell.descText;
 				Dialogue.SetActive(true);
+				if(Input.GetKeyUp (KeyCode.R))
+				{
+					closeDialogue();
+				}
 			}
 			else
 			{
-				isInteracting = false;
 				closeDialogue();
 			}
 		}
 
 		if(nodeCell.hasLord)
 		{
-			DialogueText.text = nodeCell.descText;
+			LordAvatar lordInteractingWith = GameObject.Find (nodeCell.lordID.ToString ()).GetComponent<LordAvatar>();
+			setFacingDir(lordInteractingWith,oppdir);
+			Dialogue d = _gameData.dialogues[_gameData.lords[nodeCell.lordID].dialogueID];
+
+			DialogueText.text = d.mainText;
 			Dialogue.SetActive(true);
+
+			if(Input.GetKeyUp(KeyCode.R))
+			{
+				dialogueAction (d.option1Action);
+			}
 		}
 	}
-	
+
+	public void dialogueAction(string action)
+	{
+		if(action.Contains("CloseDialogue"))
+		{
+			closeDialogue();
+		}
+	}
+
 	public void moveLord(Lord lord, LordAvatar lordAvatar)
 	{
 		GameObject newCell = GameObject.Find ("Cell" + path[path.Count-1].GetComponent<Cell>().row + "," + path[path.Count-1].GetComponent<Cell>().col);
@@ -298,6 +317,24 @@ public class RunOutsideOfBattle : MonoBehaviour
 			oldCell.GetComponent<Cell>().lordID = -1;
 			oldCell.GetComponent<Cell>().hasLord = false;
 		}
+	}
+
+	public string getString(string s, string prefix)
+	{
+		string value = "";
+		
+		if(s.Length > 0 && s.Contains (prefix))
+		{
+			int prefixIndexStart = s.IndexOf(prefix)+prefix.Length + 1;
+			
+			string temp = s.Substring(prefixIndexStart);
+			
+			int prefixIndexEnd = temp.IndexOf("|");
+			
+			value = temp.Substring(0,prefixIndexEnd);
+		}
+		
+		return value;
 	}
 
 	void moveAlongPath(GameObject player, List<GameObject> path, LordAvatar lordAvatar)

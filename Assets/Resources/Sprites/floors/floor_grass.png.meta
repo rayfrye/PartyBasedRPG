@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: b5f141eb84d5a8a4dac3e6b2942844fc
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: floor_grass
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

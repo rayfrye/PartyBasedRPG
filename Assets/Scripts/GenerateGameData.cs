@@ -16,6 +16,7 @@ public class GenerateGameData : MonoBehaviour
 	public SetupEncounters _setupEncounters;
 	public SetupFactions _setupFactions;
 	public SetupQuests _setupQuests;
+	public SetupDialogues _setupDialogue;
 	public ReadCSV _readCSV;
 	public SetupLevel _setupLevel;
 	public RunBattle _runBattle;
@@ -39,6 +40,7 @@ public class GenerateGameData : MonoBehaviour
 		_setupEncounters = _transform.gameObject.AddComponent<SetupEncounters>();
 		_setupQuests = _transform.gameObject.AddComponent<SetupQuests>();
 		_setupFactions = _transform.gameObject.AddComponent<SetupFactions>();
+		_setupDialogue = _transform.gameObject.AddComponent<SetupDialogues>();
 		_readCSV = _transform.gameObject.AddComponent<ReadCSV>();
 		_setupLevel = _transform.gameObject.AddComponent<SetupLevel>();
 		//_runBattle = _transform.gameObject.AddComponent<RunBattle>();
@@ -90,6 +92,10 @@ public class GenerateGameData : MonoBehaviour
 		_setupQuests._generateGameData = this;
 		_setupQuests.createQuests();
 
+		_setupDialogue._transform = _transform;
+		_setupDialogue._gameData = _gameData;
+		_setupDialogue.createDialogue();
+
 //		_setupLevel._transform = _transform;
 //		_setupLevel._gameData = _gameData;
 //		_setupLevel._generateGameData = this;
@@ -128,7 +134,7 @@ public class GenerateGameData : MonoBehaviour
 		_runOutsideOfBattle._gameData = _gameData;
 		_runOutsideOfBattle._setupGrid = _setupGrid;
 		_runOutsideOfBattle.getUIElements();
-		_runOutsideOfBattle.targetLord = _setupGrid.putLordOnGrid(0,3,3);
+		_runOutsideOfBattle.targetLord = _setupGrid.putLordOnGrid(0,3,3,"south",true);
 
 	}
 
@@ -152,7 +158,10 @@ public class GenerateGameData : MonoBehaviour
 	void checkLord()
 	{
 		string log = "";
-		for(int i = 0; i < _gameData.lords.Count; i++)
+
+		//for(int i = 0; i < _gameData.lords.Count; i++)
+		
+		foreach(int i in _gameData.lords.Keys)
 		{
 			log+=
 				"Lord: " + i

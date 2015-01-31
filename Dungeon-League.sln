@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{2ADADE4F-4510-D64B-5A0A-F39006DFB2D5}") = "Dungeon-League", "Assembly-CSharp.csproj", "{BCB8ED3D-8F0E-5ED3-DFE7-3E68E4AA669D}"
 EndProject
-Project("{2ADADE4F-4510-D64B-5A0A-F39006DFB2D5}") = "Dungeon-League", "Assembly-UnityScript.unityproj", "{964D14B2-55C9-D698-0051-0B7458C49F3D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,15 +13,11 @@ Global
 		{BCB8ED3D-8F0E-5ED3-DFE7-3E68E4AA669D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCB8ED3D-8F0E-5ED3-DFE7-3E68E4AA669D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCB8ED3D-8F0E-5ED3-DFE7-3E68E4AA669D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{964D14B2-55C9-D698-0051-0B7458C49F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{964D14B2-55C9-D698-0051-0B7458C49F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{964D14B2-55C9-D698-0051-0B7458C49F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{964D14B2-55C9-D698-0051-0B7458C49F3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																					GlobalSection(MonoDevelopProperties) = preSolution
+																										GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
