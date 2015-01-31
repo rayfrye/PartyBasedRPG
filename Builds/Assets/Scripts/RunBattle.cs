@@ -51,9 +51,8 @@ public class RunBattle : MonoBehaviour
 	#region UI
 	public GameObject Canvas;
 	public GameObject cell;
-	public GameObject cellContainer;
 	public GameObject endTurnButton;
-	
+
 	public Font arial;
 	#endregion UI
 
@@ -61,7 +60,6 @@ public class RunBattle : MonoBehaviour
 	{
 		Canvas = GameObject.Find ("Canvas");
 		cell = GameObject.Find ("Cell");
-		cellContainer = GameObject.Find ("Cell Container");
 		endTurnButton = GameObject.Find ("End Turn Button");
 
 		c_possibleMovementSpaceBlue = new Color32(92,131,223,150);
@@ -118,22 +116,27 @@ public class RunBattle : MonoBehaviour
 		turnIsFinished = false;
 		foundNearestSpace = false;
 
+		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+		camera.transform.parent = GameObject.Find(getCurrentLord().id.ToString()).transform;
+		camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
+		camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+
 		cellsToMoveTo = new List<GameObject>();
 	}
 
 	public void updateCellColors(bool clearMovementSpaces)
 	{
 		GameObject[] allnodes = GameObject.FindGameObjectsWithTag("Cell");
-		possibleMovementSpaces = assignCellPathScores (getCurrentLord ());
+		possibleMovementSpaces = assignCellPathScores (getCurrentLord (),getCurrentLordAvatar());
 		//possibleAttackSpaces = assignAttackCellScores (getCurrentLord(),getCurrentLord().attackRange,GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol),false);
 		//assignAttackCellScores (getCurrentLord(),getCurrentLord().attackRange,GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol),false);
 		if(getCurrentLord().factionID == factionIDSide1)
 		{
-			cellsToMoveTo = nearestSpaceToAttackFrom(getCurrentLord(),_gameData.factions[factionIDSide2]).GetComponent<Cell>().path;
+			cellsToMoveTo = nearestSpaceToAttackFrom(getCurrentLord(),getCurrentLordAvatar(),_gameData.factions[factionIDSide2]).GetComponent<Cell>().path;
 		}
 		else
 		{
-			cellsToMoveTo = nearestSpaceToAttackFrom(getCurrentLord(),_gameData.factions[factionIDSide1]).GetComponent<Cell>().path;
+			cellsToMoveTo = nearestSpaceToAttackFrom(getCurrentLord(),getCurrentLordAvatar(),_gameData.factions[factionIDSide1]).GetComponent<Cell>().path;
 		}
 		
 		foreach(GameObject node in allnodes)
@@ -193,7 +196,7 @@ public class RunBattle : MonoBehaviour
 		}
 
 		{
-			Button tempButton = GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol).transform.GetComponentInChildren<Button>();
+			Button tempButton = GameObject.Find ("Cell"+getCurrentLordAvatar().row+","+getCurrentLordAvatar().col).transform.GetComponentInChildren<Button>();
 			tempButton.GetComponent<Image>().color = c_currentTurnWhite;
 			ColorBlock tempColorBlock = tempButton.GetComponent<Button>().colors;
 			tempColorBlock.normalColor = c_currentTurnWhite;
@@ -209,6 +212,16 @@ public class RunBattle : MonoBehaviour
 		}
 
 		return _gameData.lords[battleOrder[currentBattleOrderNum]];
+	}
+
+	public LordAvatar getCurrentLordAvatar()
+	{
+		if(battleOrder[currentBattleOrderNum] == -1)
+		{
+			incrementBattleOrder();
+		}
+		
+		return GameObject.Find (_gameData.lords[battleOrder[currentBattleOrderNum]].id.ToString ()).GetComponent<LordAvatar>();
 	}
 
 	public void doDamage(Lord lord, int row, int col)
@@ -256,6 +269,7 @@ public class RunBattle : MonoBehaviour
 	public void AITakeTurn()
 	{
 		Lord lord = getCurrentLord();
+		LordAvatar lordAvatar = getCurrentLordAvatar();
 
 		if(!isMoving && !alreadyAttacked)
 		{
@@ -267,7 +281,7 @@ public class RunBattle : MonoBehaviour
 
 		if(!isAttacking && !alreadyMoved && !isMoving)
 		{
-			StartCoroutine(AIMove(lord));
+			StartCoroutine(AIMove(lordAvatar, lord));
 		}
 		
 		if(alreadyMoved && !isAttacking && possibleAttackSpaces.Count == 0)
@@ -313,7 +327,7 @@ public class RunBattle : MonoBehaviour
 		yield return new WaitForSeconds(waitTime);
 	}
 
-	public IEnumerator AIMove(Lord lord)
+	public IEnumerator AIMove(LordAvatar lordAvatar, Lord lord)
 	{
 		float waitTime = 0f;
 
@@ -321,16 +335,16 @@ public class RunBattle : MonoBehaviour
 		{
 			if(!isMoving)
 			{
-				cellsToMoveTo = GameObject.Find ("Cell"+lord.currentRow+","+lord.currentCol).GetComponent<Cell>().path;
+				cellsToMoveTo = GameObject.Find ("Cell"+lordAvatar.row+","+lordAvatar.col).GetComponent<Cell>().path;
 			}
 
 			if(lord.factionID == factionIDSide1)
 			{
-				cellsToMoveTo = nearestSpaceToAttackFrom(lord,_gameData.factions[factionIDSide2]).GetComponent<Cell>().path;
+				cellsToMoveTo = nearestSpaceToAttackFrom(lord,lordAvatar,_gameData.factions[factionIDSide2]).GetComponent<Cell>().path;
 			}
 			else
 			{
-				cellsToMoveTo = nearestSpaceToAttackFrom(lord,_gameData.factions[factionIDSide1]).GetComponent<Cell>().path;
+				cellsToMoveTo = nearestSpaceToAttackFrom(lord,lordAvatar,_gameData.factions[factionIDSide1]).GetComponent<Cell>().path;
 			}
 		}
 
@@ -346,6 +360,7 @@ public class RunBattle : MonoBehaviour
 		float waitTime = 2f;
 
 		Lord lord = getCurrentLord();
+		LordAvatar lordAvatar = getCurrentLordAvatar();
 
 		GameObject cell = GameObject.Find ("Cell" + row + "," + col);
 		int lordIDInTargetCell = cell.GetComponent<Cell>().lordID;
@@ -357,7 +372,7 @@ public class RunBattle : MonoBehaviour
 				if(_gameData.lords[lordIDInTargetCell].factionID != lord.factionID)
 				{
 					doDamage (lord,row,col);
-					possibleMovementSpaces = assignCellPathScores (lord);
+					possibleMovementSpaces = assignCellPathScores (lord, lordAvatar);
 					alreadyAttacked = true;
 				}
 			}
@@ -393,12 +408,13 @@ public class RunBattle : MonoBehaviour
 	#region movement
 	public void moveLord(Lord lord, int newRow, int newCol)
 	{
+		LordAvatar lordAvatar = getCurrentLordAvatar();
 		GameObject newCell = GameObject.Find ("Cell" + newRow + "," + newCol);
-		GameObject oldCell = GameObject.Find ("Cell" + lord.currentRow + "," + lord.currentCol);
+		GameObject oldCell = GameObject.Find ("Cell" + lordAvatar.row + "," + lordAvatar.col);
 		
 		if(newCell != oldCell)
 		{
-			moveAlongPath (GameObject.Find (lord.lordName), GameObject.Find ("Cell" + newRow + "," + newCol).GetComponent<Cell>().path);
+			moveAlongPath (GameObject.Find (lord.id.ToString()), GameObject.Find ("Cell" + newRow + "," + newCol).GetComponent<Cell>().path);
 			
 			newCell.GetComponent<Cell>().lordID = lord.id;
 			
@@ -424,8 +440,8 @@ public class RunBattle : MonoBehaviour
 			if(xDistance == 0 && yDistance == 0)
 			{
 				player.GetComponent<RectTransform>().localPosition = path[currentNodeInPath].GetComponent<RectTransform>().localPosition;
-				_gameData.lords[player.GetComponent<LordAvatar>().lordID].currentRow = path[currentNodeInPath].GetComponent<Cell>().row;
-				_gameData.lords[player.GetComponent<LordAvatar>().lordID].currentCol = path[currentNodeInPath].GetComponent<Cell>().col;
+				player.GetComponent<LordAvatar>().row = path[currentNodeInPath].GetComponent<Cell>().row;
+				player.GetComponent<LordAvatar>().col = path[currentNodeInPath].GetComponent<Cell>().col;
 				player.rigidbody2D.velocity = new Vector2(0,0);
 				currentNodeInPath++;
 			}
@@ -433,13 +449,15 @@ public class RunBattle : MonoBehaviour
 
 		if(currentNodeInPath == path.Count)
 		{
+			LordAvatar lordAvatar = getCurrentLordAvatar();
+
 			currentNodeInPath = 1;
 			isMoving = false;
 			alreadyMoved = true;
-			GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol).GetComponent<Cell>().hasLord = false;
-			getCurrentLord().currentRow = path[path.Count-1].GetComponent<Cell>().row;
-			getCurrentLord().currentCol = path[path.Count-1].GetComponent<Cell>().col;
-			GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol).GetComponent<Cell>().hasLord = true;
+			GameObject.Find ("Cell"+lordAvatar.row+","+lordAvatar.col).GetComponent<Cell>().hasLord = false;
+			lordAvatar.row = path[path.Count-1].GetComponent<Cell>().row;
+			lordAvatar.col = path[path.Count-1].GetComponent<Cell>().col;
+			GameObject.Find ("Cell"+lordAvatar.row+","+lordAvatar.col).GetComponent<Cell>().hasLord = true;
 
 			if(!alreadyAttacked)
 			{
@@ -447,11 +465,11 @@ public class RunBattle : MonoBehaviour
 				//assignAttackCellScores(getCurrentLord(),getCurrentLord().attackRange,GameObject.Find ("Cell"+getCurrentLord().currentRow+","+getCurrentLord().currentCol),false);
 				if(getCurrentLord().factionID == factionIDSide1)
 				{
-					nearestSpaceToAttackFrom(getCurrentLord(),_gameData.factions[factionIDSide2]);
+					nearestSpaceToAttackFrom(getCurrentLord(),getCurrentLordAvatar(),_gameData.factions[factionIDSide2]);
 				}
 				else
 				{
-					nearestSpaceToAttackFrom(getCurrentLord(),_gameData.factions[factionIDSide1]);
+					nearestSpaceToAttackFrom(getCurrentLord(),getCurrentLordAvatar(),_gameData.factions[factionIDSide1]);
 				}
 				
 				updateCellColors(true);
@@ -463,8 +481,9 @@ public class RunBattle : MonoBehaviour
 	{
 		bool isHorizontalMovement;
 		Lord playerLord = getCurrentLord();
+		LordAvatar lordAvatar = getCurrentLordAvatar();
 		
-		if(playerLord.currentRow == destination.GetComponent<Cell>().row)
+		if(lordAvatar.row == destination.GetComponent<Cell>().row)
 		{
 			isHorizontalMovement = true;
 		}
@@ -538,6 +557,11 @@ public class RunBattle : MonoBehaviour
 		foundNearestSpace = false;
 		cellsToMoveTo.Clear ();
 		resetCells();
+
+		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+		camera.transform.parent = GameObject.Find(getCurrentLord().id.ToString()).transform;
+		camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
+		camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 		
 		updateCellColors(false);
 	}
@@ -558,7 +582,7 @@ public class RunBattle : MonoBehaviour
 		}
 	}
 
-	public List<GameObject> assignCellPathScores(Lord lord)
+	public List<GameObject> assignCellPathScores(Lord lord, LordAvatar lordAvatar)
 	{
 		List<GameObject> nodesToCheck = new List<GameObject>();
 		List<GameObject> nodesInMovementRange = new List<GameObject>();
@@ -566,8 +590,8 @@ public class RunBattle : MonoBehaviour
 		List<GameObject> nodesAlreadyChecked = new List<GameObject>();
 		int movementRange = lord.speed;
 		
-		GameObject origin = GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol));
-		GameObject originButton = GameObject.Find ("Cell"  + (lord.currentRow) + "," + (lord.currentCol)+"_button");
+		GameObject origin = GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col));
+		GameObject originButton = GameObject.Find ("Cell"  + (lordAvatar.row) + "," + (lordAvatar.col)+"_button");
 		Cell originCell = origin.GetComponent<Cell>();
 		
 		originCell.pathScore = 0;
@@ -576,10 +600,10 @@ public class RunBattle : MonoBehaviour
 
 		List<GameObject> initialNodesToCheck = new List<GameObject>();
 
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow - 1) + "," + (lord.currentCol)));
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow + 1) + "," + (lord.currentCol)));
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol - 1)));
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol + 1)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row - 1) + "," + (lordAvatar.col)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row + 1) + "," + (lordAvatar.col)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col - 1)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col + 1)));
 
 		foreach(GameObject initialNodeToCheck in initialNodesToCheck)
 		{
@@ -745,12 +769,12 @@ public class RunBattle : MonoBehaviour
 //		List<GameObject> nodesInAttackRange = new List<GameObject>();
 //		List<GameObject> newNodesToCheck = new List<GameObject>();
 //
-//		GameObject attackSpace = GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol));
+//		GameObject attackSpace = GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col));
 //		
-//		nodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow - 1) + "," + (lord.currentCol)));
-//		nodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow + 1) + "," + (lord.currentCol)));
-//		nodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol - 1)));
-//		nodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol + 1)));
+//		nodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row - 1) + "," + (lordAvatar.col)));
+//		nodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row + 1) + "," + (lordAvatar.col)));
+//		nodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col - 1)));
+//		nodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col + 1)));
 //		
 //		foreach(GameObject nodeToCheck in nodesToCheck)
 //		{
@@ -884,7 +908,7 @@ public class RunBattle : MonoBehaviour
 //		return nodesInAttackRange;
 //	}
 
-	public List<GameObject> assignAttackCellScores(Lord lord, int attackRange, GameObject attackSpace, bool isAIAttacking)
+	public List<GameObject> assignAttackCellScores(Lord lord, LordAvatar lordAvatar, int attackRange, GameObject attackSpace, bool isAIAttacking)
 	{
 		List<GameObject> nodesToCheck = new List<GameObject>();
 		List<GameObject> nodesInAttackRange = new List<GameObject>();
@@ -892,11 +916,11 @@ public class RunBattle : MonoBehaviour
 
 		List<GameObject> initialNodesToCheck = new List<GameObject>();
 
-		//initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol)));
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow - 1) + "," + (lord.currentCol)));
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow + 1) + "," + (lord.currentCol)));
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol - 1)));
-		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol + 1)));
+		//initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row - 1) + "," + (lordAvatar.col)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row + 1) + "," + (lordAvatar.col)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col - 1)));
+		initialNodesToCheck.Add (GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col + 1)));
 
 		foreach(GameObject initialNodeToCheck in initialNodesToCheck)
 		{
@@ -1073,9 +1097,9 @@ public class RunBattle : MonoBehaviour
 		return nodesInAttackRange;
 	}
 	
-	public GameObject nearestSpaceToAttackFrom(Lord lord, Faction enemyFaction)
+	public GameObject nearestSpaceToAttackFrom(Lord lord, LordAvatar lordAvatar, Faction enemyFaction)
 	{
-		GameObject space = GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol));
+		GameObject space = GameObject.Find ("Cell" + (lordAvatar.row) + "," + (lordAvatar.col));
 
 		resetNodeAttackScores();
 		possibleAttackSpaces.Clear ();
@@ -1098,7 +1122,9 @@ public class RunBattle : MonoBehaviour
 		{
 			if(battleOrder.Contains (_gameData.lords[enemyLordID].id))
 			{
-				List<GameObject> tempCellsInRangeOfEnemy = assignAttackCellScores(_gameData.lords[enemyLordID],lord.attackRange,space,true);
+				LordAvatar enemyLordAvatar = GameObject.Find (enemyLordID.ToString ()).GetComponent<LordAvatar>();
+
+				List<GameObject> tempCellsInRangeOfEnemy = assignAttackCellScores(_gameData.lords[enemyLordID],enemyLordAvatar,lord.attackRange,space,true);
 
 				foreach(GameObject node in tempCellsInRangeOfEnemy)
 				{

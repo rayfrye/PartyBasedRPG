@@ -64,7 +64,7 @@ public class SetupLevel : MonoBehaviour
 
 	IEnumerator clickMove(int row, int col)
 	{
-		assignCellPathScores(player.GetComponent<Lord>());
+		//assignCellPathScores(player.GetComponent<Lord>());
 		movePlayer = true;
 		cellsToMoveTo = GameObject.Find ("Cell"+row+","+col).GetComponent<Cell>().path;
 
@@ -84,10 +84,10 @@ public class SetupLevel : MonoBehaviour
 
 			if(xDistance == 0 && yDistance == 0)
 			{
-				player.GetComponent<RectTransform>().localPosition = path[currentNode].GetComponent<RectTransform>().localPosition;
-				player.GetComponent<Lord>().currentRow = path[currentNode].GetComponent<Cell>().row;
-				player.GetComponent<Lord>().currentCol = path[currentNode].GetComponent<Cell>().col;
-				player.rigidbody2D.velocity = new Vector2(0,0);
+//				player.GetComponent<RectTransform>().localPosition = path[currentNode].GetComponent<RectTransform>().localPosition;
+//				player.GetComponent<Lord>().currentRow = path[currentNode].GetComponent<Cell>().row;
+//				player.GetComponent<Lord>().currentCol = path[currentNode].GetComponent<Cell>().col;
+//				player.rigidbody2D.velocity = new Vector2(0,0);
 				currentNode++;
 			}
 		}
@@ -101,7 +101,7 @@ public class SetupLevel : MonoBehaviour
 	void move(GameObject character, GameObject destination, float movementSpeed)
 	{
 		bool isHorizontalMovement;
-
+		/*
 		if(character.GetComponent<Lord>().currentRow == destination.GetComponent<Cell>().row)
 		{
 			isHorizontalMovement = true;
@@ -153,6 +153,7 @@ public class SetupLevel : MonoBehaviour
 				player.rigidbody2D.velocity = new Vector2(0,-movementSpeed);
 			}
 		}
+		*/
 	}
 
 	public void createGrid(string gridName)
@@ -237,11 +238,11 @@ public class SetupLevel : MonoBehaviour
 			playerRigidBody.gravityScale = 0;
 
 			Lord playerLord = player.AddComponent<Lord>();
-			playerLord.currentRow = 0;
-			playerLord.currentCol = 0;
+//			playerLord.currentRow = 0;
+//			playerLord.currentCol = 0;
 		}
 	}
-
+	/*
 	public List<GameObject> assignCellPathScores(Lord lord)
 	{
 		List<GameObject> nodesToCheck = new List<GameObject>();
@@ -250,7 +251,7 @@ public class SetupLevel : MonoBehaviour
 		List<GameObject> nodesAlreadyChecked = new List<GameObject>();
 		int movementRange = 50;
 		
-		GameObject origin = GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol));
+		//GameObject origin = GameObject.Find ("Cell" + (lord.currentRow) + "," + (lord.currentCol));
 		Cell originCell = origin.GetComponent<Cell>();
 		
 		originCell.pathScore = 0;
@@ -408,6 +409,6 @@ public class SetupLevel : MonoBehaviour
 		
 		return nodesInMovementRange;
 	}
-
+	*/
 
 }

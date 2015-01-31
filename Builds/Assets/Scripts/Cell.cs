@@ -24,4 +24,6 @@ public class Cell : MonoBehaviour
 	public int neighborAttackPathSpaceScore;
 
 	public int distanceToEnemy;
+
+	public string descText;
 }

@@ -19,6 +19,7 @@ public class GenerateGameData : MonoBehaviour
 	public ReadCSV _readCSV;
 	public SetupLevel _setupLevel;
 	public RunBattle _runBattle;
+	public RunOutsideOfBattle _runOutsideOfBattle;
 
 	public int numOfLordsPerFaction;
 
@@ -40,7 +41,8 @@ public class GenerateGameData : MonoBehaviour
 		_setupFactions = _transform.gameObject.AddComponent<SetupFactions>();
 		_readCSV = _transform.gameObject.AddComponent<ReadCSV>();
 		_setupLevel = _transform.gameObject.AddComponent<SetupLevel>();
-		_runBattle = _transform.gameObject.AddComponent<RunBattle>();
+		//_runBattle = _transform.gameObject.AddComponent<RunBattle>();
+		_runOutsideOfBattle = _transform.gameObject.AddComponent<RunOutsideOfBattle>();
 
 		generateData();
 
@@ -105,21 +107,28 @@ public class GenerateGameData : MonoBehaviour
 		_gameData.factions[factionID1].isPlayerControlled = true;
 		_setupGrid._gameData = _gameData;
 		_setupGrid._readCSV = _readCSV;
-		_setupGrid._runBattle = _runBattle;
 		_setupGrid.objectScale = 3;
 		_setupGrid.cellSize = 16;
 		_setupGrid.getUIElements();
-		_setupGrid.makeGrid (rows,cols,"Stone Room.csv");
-		_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
+		_setupGrid.makeGrid (rows,cols,"woodtest.csv");
 
-		_runBattle._transform = _transform;
-		_runBattle._gameData = _gameData;
-		_runBattle._setupGrid = _setupGrid;
-		_runBattle.battleOrder = _setupGrid.getBattleOrder(factionID1,factionID2);;
-		_runBattle.factionIDSide1 = factionID1;
-		_runBattle.factionIDSide2 = factionID2;
-		_runBattle.getUIElements();
-		_runBattle.setInitialState();
+//		_setupGrid._runBattle = _runBattle;
+//		_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
+
+//		_runBattle._transform = _transform;
+//		_runBattle._gameData = _gameData;
+//		_runBattle._setupGrid = _setupGrid;
+//		_runBattle.battleOrder = _setupGrid.getBattleOrder(factionID1,factionID2);;
+//		_runBattle.factionIDSide1 = factionID1;
+//		_runBattle.factionIDSide2 = factionID2;
+//		_runBattle.getUIElements();
+//		_runBattle.setInitialState();
+
+		_runOutsideOfBattle._transform = _transform;
+		_runOutsideOfBattle._gameData = _gameData;
+		_runOutsideOfBattle._setupGrid = _setupGrid;
+		_runOutsideOfBattle.getUIElements();
+		_runOutsideOfBattle.targetLord = _setupGrid.putLordOnGrid(0,3,3);
 
 	}
 

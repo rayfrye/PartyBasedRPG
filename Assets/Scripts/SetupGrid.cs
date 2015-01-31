@@ -350,9 +350,11 @@ public class SetupGrid : MonoBehaviour
 	{
 		GameObject newPlayerBase = new GameObject();
 		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-		camera.transform.parent = newPlayerBase.transform;
-		camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
-		camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+		camera.GetComponent<CameraController>().target = newPlayerBase.transform;
+//		camera.transform.SetParent(newPlayerBase.transform);
+//		camera.transform.parent = newPlayerBase.transform;
+//		camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
+//		camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
 
 		newPlayerBase.transform.parent = lordContainer.transform;
 		newPlayerBase.name = _gameData.lords[lordID].id.ToString ();

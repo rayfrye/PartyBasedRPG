@@ -6,22 +6,18 @@ Direct3D:
     Vendor:   NVIDIA
     VRAM:     1986 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.044 seconds
+Platform assembly: C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.040 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Builds\Dungeon League_Data\Managed\System.dll (this message is harmless)
-Profiler is only supported with Pro License
- 
-(Filename: C:/BuildAgent/work/d63dfc6385190b60/Runtime/Profiler/ProfilerConnection.cpp Line: 218)
-
+Platform assembly: C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\System.dll (this message is harmless)
 Class: 0
 	 id: 0
 	 name: Scripts
@@ -43,8 +39,8 @@ Class: 2
 
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-GenerateGameData:checkClasses() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:140)
-GenerateGameData:Start() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:47)
+GenerateGameData:checkClasses() (at C:\Users\Ray\Documents\GitHub\Dungeon-League\Assets\Scripts\GenerateGameData.cs:149)
+GenerateGameData:Start() (at C:\Users\Ray\Documents\GitHub\Dungeon-League\Assets\Scripts\GenerateGameData.cs:49)
  
 (Filename: C Line: 0)
 
@@ -80,7 +76,7 @@ Lord: 2
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 3
+	 factionid: 0
 Lord: 3
 	 id: 3
 	 name: Ashlee Squillace
@@ -102,7 +98,7 @@ Lord: 4
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 6
+	 factionid: 0
 Lord: 5
 	 id: 5
 	 name: Caprice Whitlow
@@ -124,7 +120,7 @@ Lord: 6
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 3
 Lord: 7
 	 id: 7
 	 name: Edgardo Daniell
@@ -135,7 +131,7 @@ Lord: 7
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 6
+	 factionid: 0
 Lord: 8
 	 id: 8
 	 name: Freida Esquivel
@@ -157,7 +153,7 @@ Lord: 9
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 3
+	 factionid: 4
 Lord: 10
 	 id: 10
 	 name: Ardath Risser
@@ -179,7 +175,7 @@ Lord: 11
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 4
+	 factionid: 0
 Lord: 12
 	 id: 12
 	 name: Consuelo Morganti
@@ -190,7 +186,7 @@ Lord: 12
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 7
+	 factionid: 0
 Lord: 13
 	 id: 13
 	 name: Nikita Royce
@@ -245,7 +241,7 @@ Lord: 17
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 1
 Lord: 18
 	 id: 18
 	 name: Roselyn Witkowski
@@ -267,7 +263,7 @@ Lord: 19
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 7
 Lord: 20
 	 id: 20
 	 name: Lorelei Stahr
@@ -278,7 +274,7 @@ Lord: 20
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 4
 Lord: 21
 	 id: 21
 	 name: Precious Feiler
@@ -322,7 +318,7 @@ Lord: 24
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 6
+	 factionid: 0
 Lord: 25
 	 id: 25
 	 name: Ronald Ferdinand
@@ -333,7 +329,7 @@ Lord: 25
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 5
+	 factionid: 0
 Lord: 26
 	 id: 26
 	 name: Alene Vanderbilt
@@ -344,7 +340,7 @@ Lord: 26
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 4
+	 factionid: 3
 Lord: 27
 	 id: 27
 	 name: Jerri Gaitan
@@ -366,7 +362,7 @@ Lord: 28
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 1
 Lord: 29
 	 id: 29
 	 name: Vonnie Crone
@@ -388,7 +384,7 @@ Lord: 30
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 5
 Lord: 31
 	 id: 31
 	 name: Phil Philpott
@@ -399,7 +395,7 @@ Lord: 31
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 3
+	 factionid: 0
 Lord: 32
 	 id: 32
 	 name: Edward Wrona
@@ -410,7 +406,7 @@ Lord: 32
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 5
 Lord: 33
 	 id: 33
 	 name: Magdalena Kalis
@@ -465,7 +461,7 @@ Lord: 37
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 3
 Lord: 38
 	 id: 38
 	 name: Johanna Huntington
@@ -498,7 +494,7 @@ Lord: 40
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 2
 Lord: 41
 	 id: 41
 	 name: Georgetta Schwartz
@@ -509,7 +505,7 @@ Lord: 41
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 2
+	 factionid: 0
 Lord: 42
 	 id: 42
 	 name: Carolann Dennie
@@ -542,7 +538,7 @@ Lord: 44
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 4
 Lord: 45
 	 id: 45
 	 name: Ellen Courts
@@ -608,7 +604,7 @@ Lord: 50
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 2
+	 factionid: 0
 Lord: 51
 	 id: 51
 	 name: Chana Mercado
@@ -619,7 +615,7 @@ Lord: 51
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 3
 Lord: 52
 	 id: 52
 	 name: Rosanne Maupin
@@ -641,7 +637,7 @@ Lord: 53
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 2
+	 factionid: 0
 Lord: 54
 	 id: 54
 	 name: Qiana Odea
@@ -696,7 +692,7 @@ Lord: 58
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 2
+	 factionid: 3
 Lord: 59
 	 id: 59
 	 name: Ardella Clouse
@@ -718,7 +714,7 @@ Lord: 60
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 5
+	 factionid: 0
 Lord: 61
 	 id: 61
 	 name: Kiyoko Schempp
@@ -729,7 +725,7 @@ Lord: 61
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 2
+	 factionid: 0
 Lord: 62
 	 id: 62
 	 name: Wynona Fannon
@@ -762,7 +758,7 @@ Lord: 64
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 5
+	 factionid: 0
 Lord: 65
 	 id: 65
 	 name: Claudio Glandon
@@ -806,7 +802,7 @@ Lord: 68
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 5
+	 factionid: 0
 Lord: 69
 	 id: 69
 	 name: Antonio Manchester
@@ -828,7 +824,7 @@ Lord: 70
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 1
 Lord: 71
 	 id: 71
 	 name: Harriet Rappaport
@@ -839,7 +835,7 @@ Lord: 71
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 5
 Lord: 72
 	 id: 72
 	 name: Prudence Howarth
@@ -861,7 +857,7 @@ Lord: 73
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 1
 Lord: 74
 	 id: 74
 	 name: Bronwyn Speights
@@ -916,7 +912,7 @@ Lord: 78
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 1
+	 factionid: 0
 Lord: 79
 	 id: 79
 	 name: Vernie Hockman
@@ -938,7 +934,7 @@ Lord: 80
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 7
+	 factionid: 0
 Lord: 81
 	 id: 81
 	 name: Gricelda Vazguez
@@ -960,7 +956,7 @@ Lord: 82
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 1
+	 factionid: 2
 Lord: 83
 	 id: 83
 	 name: Macie Reineke
@@ -1048,7 +1044,7 @@ Lord: 90
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 6
 Lord: 91
 	 id: 91
 	 name: Sterling Kappler
@@ -1059,7 +1055,7 @@ Lord: 91
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 3
+	 factionid: 0
 Lord: 92
 	 id: 92
 	 name: Emory Scheid
@@ -1081,7 +1077,7 @@ Lord: 93
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 6
 Lord: 94
 	 id: 94
 	 name: Glenn Shope
@@ -1103,7 +1099,7 @@ Lord: 95
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 3
+	 factionid: 0
 Lord: 96
 	 id: 96
 	 name: Pennie Islam
@@ -1114,7 +1110,7 @@ Lord: 96
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 5
 Lord: 97
 	 id: 97
 	 name: Mazie Pickford
@@ -1125,7 +1121,7 @@ Lord: 97
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 1
 Lord: 98
 	 id: 98
 	 name: Sheron Reves
@@ -1147,7 +1143,7 @@ Lord: 99
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 7
+	 factionid: 2
 Lord: 100
 	 id: 100
 	 name: Quinn Montague
@@ -1180,7 +1176,7 @@ Lord: 102
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 2
 Lord: 103
 	 id: 103
 	 name: Jung Mcfarlain
@@ -1202,7 +1198,7 @@ Lord: 104
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 1
+	 factionid: 0
 Lord: 105
 	 id: 105
 	 name: Edith Richburg
@@ -1235,7 +1231,7 @@ Lord: 107
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 6
 Lord: 108
 	 id: 108
 	 name: Devora Creel
@@ -1246,7 +1242,7 @@ Lord: 108
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 4
+	 factionid: 0
 Lord: 109
 	 id: 109
 	 name: Teodoro Fenton
@@ -1290,7 +1286,7 @@ Lord: 112
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 1
+	 factionid: 7
 Lord: 113
 	 id: 113
 	 name: Ivory Fullam
@@ -1301,7 +1297,7 @@ Lord: 113
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 2
 Lord: 114
 	 id: 114
 	 name: Michaela Vail
@@ -1312,7 +1308,7 @@ Lord: 114
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 4
+	 factionid: 0
 Lord: 115
 	 id: 115
 	 name: Katharina Camberos
@@ -1345,7 +1341,7 @@ Lord: 117
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 6
 Lord: 118
 	 id: 118
 	 name: Flavia Carrasquillo
@@ -1356,7 +1352,7 @@ Lord: 118
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 1
+	 factionid: 0
 Lord: 119
 	 id: 119
 	 name: Marlon Vancuren
@@ -1422,7 +1418,7 @@ Lord: 124
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 6
 Lord: 125
 	 id: 125
 	 name: Lavada Brandy
@@ -1455,7 +1451,7 @@ Lord: 127
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 6
+	 factionid: 0
 Lord: 128
 	 id: 128
 	 name: Osvaldo Oquin
@@ -1499,7 +1495,7 @@ Lord: 131
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 6
+	 factionid: 0
 Lord: 132
 	 id: 132
 	 name: Bailey Longino
@@ -1521,7 +1517,7 @@ Lord: 133
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 4
+	 factionid: 0
 Lord: 134
 	 id: 134
 	 name: Illa Deanda
@@ -1543,7 +1539,7 @@ Lord: 135
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 4
 Lord: 136
 	 id: 136
 	 name: Allan Leitner
@@ -1565,7 +1561,7 @@ Lord: 137
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 3
 Lord: 138
 	 id: 138
 	 name: Luciano Rickards
@@ -1587,7 +1583,7 @@ Lord: 139
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 6
+	 factionid: 0
 Lord: 140
 	 id: 140
 	 name: Hubert Schlachter
@@ -1620,7 +1616,7 @@ Lord: 142
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 5
 Lord: 143
 	 id: 143
 	 name: Sierra Cahall
@@ -1642,7 +1638,7 @@ Lord: 144
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 3
+	 factionid: 0
 Lord: 145
 	 id: 145
 	 name: Cristin Pan
@@ -1664,7 +1660,7 @@ Lord: 146
 	 speed: 5
 	 exp: 0
 	 isavailable: True
-	 factionid: 5
+	 factionid: 7
 Lord: 147
 	 id: 147
 	 name: Apryl Ryba
@@ -1675,7 +1671,7 @@ Lord: 147
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 4
 Lord: 148
 	 id: 148
 	 name: Dorotha Rosado
@@ -1686,7 +1682,7 @@ Lord: 148
 	 speed: 2
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 6
 Lord: 149
 	 id: 149
 	 name: Maisha Penrose
@@ -1701,8 +1697,8 @@ Lord: 149
 
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-GenerateGameData:checkLord() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:162)
-GenerateGameData:Start() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:48)
+GenerateGameData:checkLord() (at C:\Users\Ray\Documents\GitHub\Dungeon-League\Assets\Scripts\GenerateGameData.cs:171)
+GenerateGameData:Start() (at C:\Users\Ray\Documents\GitHub\Dungeon-League\Assets\Scripts\GenerateGameData.cs:50)
  
 (Filename: C Line: 0)
 
@@ -1711,92 +1707,91 @@ Faction: 0
 	 name: Team 0
 	 isPlayerControlled: True
 	 lordNames: 
-		Harriet Rappaport, Rogue
-		Hubert Schlachter, Rogue
-		Carlene Daughtridge, Fighter
-		Apryl Ryba, Fighter
-		Sherilyn Mirando, Defender
-		Caprice Whitlow, Rogue
+		Cristin Pan, Defender
+		Gay Shryock, Fighter
+		Phil Philpott, Defender
+		Otilia Cambell, Defender
+		Gaylord Breeden, Rogue
+		Edgardo Daniell, Defender
 Faction: 1
 	 id: 1
 	 name: Team 1
 	 isPlayerControlled: False
 	 lordNames: 
-		Liliana Gravitt, Fighter
 		Rosamaria Yerian, Rogue
-		Flavia Carrasquillo, Defender
-		Roger Nassar, Defender
-		Dion Pesqueira, Defender
-		Kary Peterkin, Rogue
+		Thea Halfacre, Rogue
+		Barbra Chatham, Defender
+		Marta Hennessee, Defender
+		Piper Goodlow, Defender
+		Mazie Pickford, Defender
 Faction: 2
 	 id: 2
 	 name: Team 3
 	 isPlayerControlled: False
 	 lordNames: 
-		Ezra Aguero, Defender
-		Dyan Enciso, Rogue
 		Kellie Prevo, Rogue
-		Chassidy Luoma, Rogue
-		Georgetta Schwartz, Rogue
-		Kiyoko Schempp, Defender
+		Ivory Fullam, Rogue
+		Tempie Holoman, Defender
+		Fiona Halley, Fighter
+		Dion Pesqueira, Defender
+		Carlene Daughtridge, Fighter
 Faction: 3
 	 id: 3
 	 name: Team 4
 	 isPlayerControlled: False
 	 lordNames: 
-		Rufina Arbour, Rogue
-		Dora Michael, Fighter
-		Marco Milam, Rogue
-		Nikia Seaberg, Fighter
-		Phil Philpott, Defender
-		Sterling Kappler, Defender
+		Chauncey Brummett, Fighter
+		Ezra Aguero, Defender
+		Newton Dicarlo, Defender
+		Norine Khalaf, Rogue
+		Alene Vanderbilt, Rogue
+		Chana Mercado, Fighter
 Faction: 4
 	 id: 4
 	 name: Team 5
 	 isPlayerControlled: False
 	 lordNames: 
-		Nick Parmley, Rogue
 		Katharina Camberos, Defender
-		Alene Vanderbilt, Rogue
-		Shirlene Stoneham, Defender
-		Michaela Vail, Fighter
-		Devora Creel, Fighter
+		Lorelei Stahr, Rogue
+		Patria Washburn, Fighter
+		Apryl Ryba, Fighter
+		Nikia Seaberg, Fighter
+		Edmund Maresca, Rogue
 Faction: 5
 	 id: 5
 	 name: Team 6
 	 isPlayerControlled: False
 	 lordNames: 
-		Birgit Felter, Rogue
-		Marjorie Levitan, Defender
-		Kandace Louis, Rogue
-		Michelina Stonge, Fighter
-		Ronald Ferdinand, Defender
+		Sherilyn Mirando, Defender
+		Harriet Rappaport, Rogue
+		Edward Wrona, Rogue
+		Bea Kaylor, Fighter
 		Amina Eilers, Fighter
+		Pennie Islam, Fighter
 Faction: 6
 	 id: 6
 	 name: Team 7
 	 isPlayerControlled: False
 	 lordNames: 
-		Shanti Weyandt, Defender
-		Alyse Krogman, Defender
-		Katrice Ferro, Defender
-		Edgardo Daniell, Defender
-		Rosemary Stumbaugh, Fighter
-		Cherry Hamer, Rogue
+		Homer Kroenke, Fighter
+		Tawanna Situ, Rogue
+		Dorotha Rosado, Defender
+		Vickey Bryer, Defender
+		Vergie Leibowitz, Fighter
+		Claretta Lamberti, Fighter
 Faction: 7
 	 id: 7
 	 name: test
 	 isPlayerControlled: False
 	 lordNames: 
-		Fiona Halley, Fighter
-		Delphia Watters, Rogue
-		Consuelo Morganti, Fighter
+		Roger Nassar, Defender
+		Birgit Felter, Rogue
+		Renato Verrett, Defender
 
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)
-GenerateGameData:checkFactions() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:185)
-GenerateGameData:Start() (at C:\Users\Ray\Desktop\workingversions DropBox\Dropbox\Dungeon League\Assets\Scripts\GenerateGameData.cs:49)
+GenerateGameData:checkFactions() (at C:\Users\Ray\Documents\GitHub\Dungeon-League\Assets\Scripts\GenerateGameData.cs:194)
+GenerateGameData:Start() (at C:\Users\Ray\Documents\GitHub\Dungeon-League\Assets\Scripts\GenerateGameData.cs:51)
  
 (Filename: C Line: 0)
 
-Waiting for finish

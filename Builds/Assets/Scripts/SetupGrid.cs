@@ -26,7 +26,11 @@ public class SetupGrid : MonoBehaviour
 	public GameObject Canvas;
 	public GameObject cell;
 	public GameObject cellContainer;
+	public GameObject lordContainer;
+	public GameObject endTurnButton;
 
+	
+	
 	public Font arial;
 	#endregion UI
 
@@ -39,6 +43,11 @@ public class SetupGrid : MonoBehaviour
 		Canvas = GameObject.Find ("Canvas");
 		cell = GameObject.Find ("Cell");
 		cellContainer = GameObject.Find ("Cell Container");
+		lordContainer = GameObject.Find ("Lord Container");
+		endTurnButton = GameObject.Find ("End Turn Button");
+
+		
+		
 	}
 
 	public void makeGrid(int rows, int cols, string gridName)
@@ -57,10 +66,10 @@ public class SetupGrid : MonoBehaviour
 				newSprite.tag = "Cell";
 				newSprite.AddComponent<CanvasRenderer>();
 				newSprite.transform.parent = cellContainer.transform;
-				
+
 				SpriteRenderer newSpriteSpriteRenderer = newSprite.AddComponent<SpriteRenderer>();
-				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+level[row,col]);
-				//newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/walls/wall_stone");
+				newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"bg"));
+				//newSpriteSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/floor_wood");
 				newSpriteSpriteRenderer.sortingOrder = 0;
 
 				RectTransform newSpriteRectTransform = newSprite.AddComponent<RectTransform>();
@@ -77,10 +86,34 @@ public class SetupGrid : MonoBehaviour
 				Cell newSpriteCell = newSprite.AddComponent<Cell>();
 				newSpriteCell.path = new List<GameObject>();
 
-				if(row <= 1 || row >= 11 || col <= 1 || col >= 13)
+				if(getCellValue(level[row,col],"isInvalidSpace") == "true")
 				{
 					newSpriteCell.isInvalidSpace = true;
 				}
+
+				if(level[row,col].Contains ("text"))
+				{
+					newSpriteCell.descText = getCellValue(level[row,col],"text");
+				}
+				else
+				{
+					newSpriteCell.descText = "";
+				}
+
+				if(level[row,col].Contains ("obj1"))
+				{
+					GameObject obj = new GameObject();
+					obj.transform.parent = newSprite.transform;
+					SpriteRenderer objSpriteRenderer = obj.AddComponent<SpriteRenderer>();
+					objSpriteRenderer.sortingOrder = 1;
+					objSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"obj1"));
+
+					RectTransform objRectTransform = obj.AddComponent<RectTransform>();
+					objRectTransform.localScale = new Vector3(1,1,1);
+					objRectTransform.sizeDelta = new Vector3(cellSize,cellSize,1);
+					objRectTransform.localPosition = new Vector3(0,0,0);
+				}
+
 
 				newSpriteCell.row = row;
 				newSpriteCell.col = col;
@@ -96,7 +129,8 @@ public class SetupGrid : MonoBehaviour
 				buttonRectTransform.localPosition = new Vector3(0,0,0);
 				
 				Image buttonImg = button.AddComponent<Image>();
-				buttonImg.color = new Color32(255,255,255,50);
+				buttonImg.color = new Color32(255,255,255,0);
+				//buttonImg.color = new Color32(255,255,255,50);
 				
 				Button buttonBtn = button.AddComponent<Button>();
 				buttonBtn.targetGraphic = buttonImg;
@@ -110,25 +144,43 @@ public class SetupGrid : MonoBehaviour
 
 		GameObject.Destroy (cell);
 	}
+
+	public string getCellValue(string cellString, string cellType)
+	{
+		string s = "";
+
+		if(cellString.Length > 0 && cellString.Contains (cellType))
+		{
+			int prefixIndexStart = cellString.IndexOf(cellType)+cellType.Length + 1;
+
+			string temp = cellString.Substring(prefixIndexStart);
+
+			int prefixIndexEnd = temp.IndexOf("|");
+
+			s = temp.Substring(0,prefixIndexEnd);
+		}
+
+		return s;
+	}
 	
 	public void putFactionsOnGrid(int factionID1, int factionID2, int rows, int cols)
 	{
 		factionIDSide1 = factionID1;
 		factionIDSide2 = factionID2;
 
-		grid[2,2] = _gameData.factions[factionID1].positions[3];
-		grid[3,2] = _gameData.factions[factionID1].positions[4];
-		grid[4,2] = _gameData.factions[factionID1].positions[5];
-		grid[2,3] = _gameData.factions[factionID1].positions[0];
-		grid[3,3] = _gameData.factions[factionID1].positions[1];
-		grid[4,3] = _gameData.factions[factionID1].positions[2];
+		grid[4,2] = _gameData.factions[factionID1].positions[3];
+		grid[5,2] = _gameData.factions[factionID1].positions[4];
+		grid[6,2] = _gameData.factions[factionID1].positions[5];
+		grid[4,3] = _gameData.factions[factionID1].positions[0];
+		grid[5,3] = _gameData.factions[factionID1].positions[1];
+		grid[6,3] = _gameData.factions[factionID1].positions[2];
 		
-		grid[2,9] = _gameData.factions[factionID2].positions[3];
-		grid[3,9] = _gameData.factions[factionID2].positions[4];
-		grid[4,9] = _gameData.factions[factionID2].positions[5];
-		grid[2,8] = _gameData.factions[factionID2].positions[0];
-		grid[3,8] = _gameData.factions[factionID2].positions[1];
-		grid[4,8] = _gameData.factions[factionID2].positions[2];
+		grid[4,9] = _gameData.factions[factionID2].positions[3];
+		grid[5,9] = _gameData.factions[factionID2].positions[4];
+		grid[6,9] = _gameData.factions[factionID2].positions[5];
+		grid[4,8] = _gameData.factions[factionID2].positions[0];
+		grid[5,8] = _gameData.factions[factionID2].positions[1];
+		grid[6,8] = _gameData.factions[factionID2].positions[2];
 		
 		for(int col = 0; col < grid.GetLength (1); col++)
 		{
@@ -137,10 +189,18 @@ public class SetupGrid : MonoBehaviour
 				if(grid[row,col] != -1)
 				{
 					GameObject newPlayerBase = new GameObject();
+					GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+
 					newPlayerBase.transform.parent = cellContainer.transform;
-					newPlayerBase.name = _gameData.lords[grid[row,col]].lordName;
+					newPlayerBase.name = _gameData.lords[grid[row,col]].id.ToString ();
+
+					camera.transform.parent = newPlayerBase.transform;
+					camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
+					camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+
 					LordAvatar newPlayerBaseLordAvatar = newPlayerBase.AddComponent<LordAvatar>();
 					newPlayerBaseLordAvatar.lordID = grid[row,col];
+
 
 					RectTransform defaultCellRectTransform = GameObject.Find ("Cell"+row+","+col).GetComponent<RectTransform>(); 
 
@@ -155,8 +215,8 @@ public class SetupGrid : MonoBehaviour
 					Rigidbody2D playerRigidBody = newPlayerBase.AddComponent<Rigidbody2D>();
 					playerRigidBody.gravityScale = 0;
 
-					_gameData.lords[newPlayerBaseLordAvatar.lordID].currentRow = row;
-					_gameData.lords[newPlayerBaseLordAvatar.lordID].currentCol = col;
+					newPlayerBaseLordAvatar.row = row;
+					newPlayerBaseLordAvatar.col = col;
 
 					GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().hasLord = true;
 					GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().lordID = grid[row,col];
@@ -172,7 +232,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerBody.AddComponent<Animator>();
-					newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_body_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_body_walk_east_cont") as RuntimeAnimatorController;
 					
 					playerRectTransform = newPlayerBody.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -189,7 +249,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 
 					newPlayerSkin.AddComponent<Animator>();
-					newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_skin_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_skin_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerSkin.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -206,7 +266,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 
 					newPlayerHair.AddComponent<Animator>();
-					newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_hair_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_hair_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerHair.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -223,7 +283,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 
 					newPlayerEyes.AddComponent<Animator>();
-					newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_eyes_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_eyes_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerEyes.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -240,7 +300,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerShirt.AddComponent<Animator>();
-					newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shirt_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shirt_walk_east_cont") as RuntimeAnimatorController;
 					
 					playerRectTransform = newPlayerShirt.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
@@ -257,7 +317,7 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerPants.AddComponent<Animator>();
-					newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_pants_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_pants_walk_east_cont") as RuntimeAnimatorController;
 
 
 
@@ -276,21 +336,182 @@ public class SetupGrid : MonoBehaviour
 					_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
 					
 					newPlayerShoes.AddComponent<Animator>();
-					newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/south/anims/human_shoes_walk_south_cont") as RuntimeAnimatorController;
+					newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shoes_walk_east_cont") as RuntimeAnimatorController;
 
 					playerRectTransform = newPlayerShoes.AddComponent<RectTransform>();
 					playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
 					playerRectTransform.localPosition = new Vector3(0,0,0);
-					
 				}
 			}
 		}
 	}
+
+	public GameObject putLordOnGrid(int lordID, int row, int col)
+	{
+		GameObject newPlayerBase = new GameObject();
+		GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+//		camera.transform.SetParent(newPlayerBase.transform);
+//		camera.transform.parent = newPlayerBase.transform;
+//		camera.GetComponent<RectTransform>().localPosition = new Vector3(0,0,-10);
+//		camera.GetComponent<RectTransform>().localScale = new Vector3(1,1,1);
+
+		newPlayerBase.transform.parent = lordContainer.transform;
+		newPlayerBase.name = _gameData.lords[lordID].id.ToString ();
+		LordAvatar newPlayerBaseLordAvatar = newPlayerBase.AddComponent<LordAvatar>();
+		newPlayerBaseLordAvatar.lordID = lordID;
+		newPlayerBaseLordAvatar.facingDir = "east";
+		
+		RectTransform defaultCellRectTransform = GameObject.Find ("Cell"+row+","+col).GetComponent<RectTransform>(); 
+		
+		RectTransform playerRectTransform = newPlayerBase.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(1,1,1);
+		playerRectTransform.localPosition = 
+			new Vector3(
+				defaultCellRectTransform.localPosition.x
+				,defaultCellRectTransform.localPosition.y
+				,0);
+		
+		Rigidbody2D playerRigidBody = newPlayerBase.AddComponent<Rigidbody2D>();
+		playerRigidBody.gravityScale = 0;
+		
+		newPlayerBaseLordAvatar.row = row;
+		newPlayerBaseLordAvatar.col = col;
+		
+		GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().hasLord = true;
+		GameObject.Find ("Cell" + row + "," + col).GetComponent<Cell>().lordID = lordID;
+		
+		
+		GameObject newPlayerBody = new GameObject();
+		newPlayerBody.name = newPlayerBase.name + "_body";
+		newPlayerBody.transform.parent = newPlayerBase.transform;
+		
+		CanvasRenderer _canvasRenderer = newPlayerBody.AddComponent<CanvasRenderer>();
+		SpriteRenderer _spriteRenderer = newPlayerBody.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 1;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerBody.AddComponent<Animator>();
+		newPlayerBody.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_body_walk_east_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerBody.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerSkin = new GameObject();
+		newPlayerSkin.name = newPlayerBase.name + "_skin";
+		newPlayerSkin.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerSkin.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerSkin.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 1;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerSkin.AddComponent<Animator>();
+		newPlayerSkin.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_skin_walk_east_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerSkin.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerHair = new GameObject();
+		newPlayerHair.name = newPlayerBase.name + "_hair";
+		newPlayerHair.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerHair.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerHair.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 3;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerHair.AddComponent<Animator>();
+		newPlayerHair.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_hair_walk_east_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerHair.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerEyes = new GameObject();
+		newPlayerEyes.name = newPlayerBase.name + "_eyes";
+		newPlayerEyes.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerEyes.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerEyes.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerEyes.AddComponent<Animator>();
+		newPlayerEyes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_eyes_walk_east_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerEyes.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerShirt = new GameObject();
+		newPlayerShirt.name = newPlayerBase.name + "_shirt";
+		newPlayerShirt.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerShirt.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerShirt.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerShirt.AddComponent<Animator>();
+		newPlayerShirt.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shirt_walk_east_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerShirt.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerPants = new GameObject();
+		newPlayerPants.name = newPlayerBase.name + "_pants";
+		newPlayerPants.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerPants.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerPants.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerPants.AddComponent<Animator>();
+		newPlayerPants.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_pants_walk_east_cont") as RuntimeAnimatorController;
+		
+		
+		
+		playerRectTransform = newPlayerPants.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+		
+		
+		GameObject newPlayerShoes = new GameObject();
+		newPlayerShoes.name = newPlayerBase.name + "_shoes";
+		newPlayerShoes.transform.parent = newPlayerBase.transform;
+		
+		_canvasRenderer = newPlayerShoes.AddComponent<CanvasRenderer>();
+		_spriteRenderer = newPlayerShoes.AddComponent<SpriteRenderer>();
+		_spriteRenderer.sortingOrder = 2;
+		_spriteRenderer.color = colors[UnityEngine.Random.Range (0,colors.Length)];
+		
+		newPlayerShoes.AddComponent<Animator>();
+		newPlayerShoes.GetComponent<Animator>().runtimeAnimatorController = Resources.Load("Sprites/human/east/anims/human_shoes_walk_east_cont") as RuntimeAnimatorController;
+		
+		playerRectTransform = newPlayerShoes.AddComponent<RectTransform>();
+		playerRectTransform.localScale = new Vector3(objectScale,objectScale,1);
+		playerRectTransform.localPosition = new Vector3(0,0,0);
+
+		return newPlayerBase;
+	}
 	
 	public IEnumerator handleClick(int row, int col)
 	{
-		float waitTime = 2f;
-		StartCoroutine(_runBattle.handleClick(row,col));
+		float waitTime = 0f;
+
+		if(_runBattle)
+		{
+			StartCoroutine(_runBattle.handleClick(row,col));
+		}
 
 		yield return new WaitForSeconds(waitTime);
 	}
