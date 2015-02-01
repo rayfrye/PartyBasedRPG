@@ -10,6 +10,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 	public Transform _transform;
 	public GameData _gameData;
 	public SetupGrid _setupGrid;
+	public GenerateGameData _generateGameData;
 
 	public GameObject targetLord;
 
@@ -17,6 +18,9 @@ public class RunOutsideOfBattle : MonoBehaviour
 	public bool isInteracting = false;
 	public int currentNodeInPath = 0;
 	public List<GameObject> path = new List<GameObject>();
+	public bool disabledTiles = false;
+	public int cellRowRangeToDraw = 15;
+	public int cellColRangeToDraw = 25;
 
 	#region UI
 	public GameObject Canvas;
@@ -53,6 +57,38 @@ public class RunOutsideOfBattle : MonoBehaviour
 		{
 			interact();
 		}
+
+		if(!disabledTiles)
+		{
+			disableOutOfViewTiles();
+		}
+	}
+
+	public void disableOutOfViewTiles()
+	{
+		List<GameObject> nodes = _gameData.tiles;
+		
+		foreach(GameObject node in nodes)
+		{
+			Cell nodeCell = node.GetComponent<Cell>();
+			LordAvatar lordAvatar = targetLord.GetComponent<LordAvatar>();
+
+			if(
+				nodeCell.row >= lordAvatar.row + cellRowRangeToDraw 
+				|| nodeCell.row <= lordAvatar.row - cellRowRangeToDraw
+				|| nodeCell.col >= lordAvatar.col + cellColRangeToDraw 
+				|| nodeCell.col <= lordAvatar.col - cellColRangeToDraw
+			)
+			{
+				node.SetActive (false);
+			}
+			else
+			{
+				node.SetActive (true);
+			}
+		}
+
+		disabledTiles = true;
 	}
 
 	public void input()
@@ -341,13 +377,21 @@ public class RunOutsideOfBattle : MonoBehaviour
 	{
 		if(currentNodeInPath < path.Count)
 		{
-			move (player,path[currentNodeInPath],2f);
+			move (player,path[currentNodeInPath],5f);
 			
-			int xDistance = (int) (player.GetComponent<RectTransform>().localPosition.x - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.x);
-			int yDistance = (int) (player.GetComponent<RectTransform>().localPosition.y - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.y);
-			
-			if(xDistance == 0 && yDistance == 0)
+			float xDistance = Mathf.RoundToInt(Mathf.Abs(player.GetComponent<RectTransform>().localPosition.x - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.x));
+			float yDistance = Mathf.RoundToInt(Mathf.Abs(player.GetComponent<RectTransform>().localPosition.y - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.y));
+
+			if(xDistance <= 1 && yDistance <= 1)
 			{
+				if(path[currentNodeInPath].GetComponent<Cell>().isDoor)
+				{
+					_generateGameData.levelToLoad = path[currentNodeInPath].GetComponent<Cell>().doorDest+".csv";
+					_generateGameData.doorNum = path[currentNodeInPath].GetComponent<Cell>().doorDestID;
+					Application.LoadLevel("Test Town");
+					_generateGameData.loadLevel = true;
+				}
+
 				player.GetComponent<RectTransform>().localPosition = path[currentNodeInPath].GetComponent<RectTransform>().localPosition;
 				lordAvatar.row = path[currentNodeInPath].GetComponent<Cell>().row;
 				lordAvatar.col = path[currentNodeInPath].GetComponent<Cell>().col;
@@ -364,6 +408,7 @@ public class RunOutsideOfBattle : MonoBehaviour
 			lordAvatar.col = path[path.Count-1].GetComponent<Cell>().col;
 			GameObject.Find ("Cell"+lordAvatar.row+","+lordAvatar.col).GetComponent<Cell>().hasLord = true;
 			path.Clear ();
+			disabledTiles = false;
 		}
 	}
 
@@ -385,6 +430,9 @@ public class RunOutsideOfBattle : MonoBehaviour
 		if(isHorizontalMovement)
 		{
 			bool isLeft;
+
+			float distance = Mathf.Abs (player.GetComponent<RectTransform>().localPosition.x - destination.GetComponent<RectTransform>().localPosition.x);
+			float speed = Mathf.Min (movementSpeed,movementSpeed * (distance/8));
 			
 			if(player.GetComponent<RectTransform>().localPosition.x > destination.GetComponent<RectTransform>().localPosition.x)
 			{
@@ -396,17 +444,20 @@ public class RunOutsideOfBattle : MonoBehaviour
 			}
 			if(isLeft)
 			{
-				player.rigidbody2D.velocity = new Vector2(-movementSpeed,0);
+				player.rigidbody2D.velocity = new Vector2(-speed,0);
 			}
 			else
 			{
-				player.rigidbody2D.velocity = new Vector2(movementSpeed,0);
+				player.rigidbody2D.velocity = new Vector2(speed,0);
 			}
 		}
 		else
 		{
 			bool isUp;
-			
+
+			float distance = Mathf.Abs (player.GetComponent<RectTransform>().localPosition.y - destination.GetComponent<RectTransform>().localPosition.y);
+			float speed = Mathf.Min (movementSpeed,movementSpeed * (distance/8));
+
 			if(player.GetComponent<RectTransform>().localPosition.y > destination.GetComponent<RectTransform>().localPosition.y)
 			{
 				isUp = false;
@@ -417,11 +468,11 @@ public class RunOutsideOfBattle : MonoBehaviour
 			}
 			if(isUp)
 			{
-				player.rigidbody2D.velocity = new Vector2(0,movementSpeed);
+				player.rigidbody2D.velocity = new Vector2(0,speed);
 			}
 			else
 			{
-				player.rigidbody2D.velocity = new Vector2(0,-movementSpeed);
+				player.rigidbody2D.velocity = new Vector2(0,-speed);
 			}
 		}
 	}

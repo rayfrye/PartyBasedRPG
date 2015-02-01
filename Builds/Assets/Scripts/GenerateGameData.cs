@@ -22,15 +22,20 @@ public class GenerateGameData : MonoBehaviour
 	public RunBattle _runBattle;
 	public RunOutsideOfBattle _runOutsideOfBattle;
 
-	public int numOfLordsPerFaction;
+	public bool alreadyLoaded = false;
+	public bool loadLevel = false;
 
-	#region sprites
-	public Sprite floor_woodTile;
-	#endregion sprites
+	public string levelToLoad = "town.csv";
+	public int doorNum = 1;
+	public int targetLordID = 0;
+
+	public int numOfLordsPerFaction;
 
 	// Use this for initialization
 	void Start () 
 	{
+		DontDestroyOnLoad(this);
+
 		_transform = GetComponent<Transform>();
 		_setupGrid = _transform.GetComponent<SetupGrid>();
 		_gameData = _transform.GetComponent<GameData>();
@@ -53,48 +58,77 @@ public class GenerateGameData : MonoBehaviour
 		checkFactions();
 	}
 
-	void generateData()
+	void Update()
+	{
+		if(loadLevel)
+		{
+			generateData();
+		}
+	}
+
+	public void generateData()
 	{
 		_gameData._transform = _transform;
 
 		_setupLordClasses._transform = _transform;
 		_setupLordClasses._gameData = _gameData;
 		_setupLordClasses._generateGameData = this;
-		_setupLordClasses.createClasses();
+		if(!alreadyLoaded)
+		{
+			_setupLordClasses.createClasses();
+		}
 
 		_setupLords._transform = _transform;
 		_setupLords._gameData = _gameData;
 		_setupLords._generateGameData = this;
-		_setupLords.generateNames ();
-		_setupLords.createLords();
+		if(!alreadyLoaded)
+		{
+			_setupLords.generateNames ();
+			_setupLords.createLords(150);
+		}
 
 		_setupFactions._transform = _transform;
 		_setupFactions._gameData = _gameData;
 		_setupFactions._generateGameData = this;
-		_setupFactions.numOfLordsToDraft = numOfLordsPerFaction;
-		_setupFactions.generateFactionNames ();
-		_setupFactions.availableLords = _gameData.lords;
-		_setupFactions.createFactions();
-		//_setupFactions.customFactions ();
+		if(!alreadyLoaded)
+		{
+			_setupFactions.numOfLordsToDraft = numOfLordsPerFaction;
+			_setupFactions.generateFactionNames ();
+			_setupFactions.availableLords = _gameData.lords;
+			_setupFactions.createFactions();
+		}
 
 		_setupEncounterTypes._transform = _transform;
 		_setupEncounterTypes._gameData = _gameData;
 		_setupEncounterTypes._generateGameData = this;
-		_setupEncounterTypes.createEncounterTypes();
+		if(!alreadyLoaded)
+		{
+			_setupEncounterTypes.createEncounterTypes();
+		}
 
 		_setupEncounters._transform = _transform;
 		_setupEncounters._gameData = _gameData;
 		_setupEncounters._generateGameData = this;
-		_setupEncounters.createEncounters();
+		if(!alreadyLoaded)
+		{
+			_setupEncounters.createEncounters();
+		}
 
 		_setupQuests._transform = _transform;
 		_setupQuests._gameData = _gameData;
 		_setupQuests._generateGameData = this;
-		_setupQuests.createQuests();
+		if(!alreadyLoaded)
+		{
+			_setupQuests.createQuests();
+		}
+
 
 		_setupDialogue._transform = _transform;
 		_setupDialogue._gameData = _gameData;
-		_setupDialogue.createDialogue();
+		if(!alreadyLoaded)
+		{
+			_setupDialogue.createDialogue();
+		}
 
 //		_setupLevel._transform = _transform;
 //		_setupLevel._gameData = _gameData;
@@ -110,13 +144,13 @@ public class GenerateGameData : MonoBehaviour
 		int factionID1 = 0;
 		int factionID2 = 1;
 		
-		_gameData.factions[factionID1].isPlayerControlled = true;
+		//_gameData.factions[factionID1].isPlayerControlled = true;
 		_setupGrid._gameData = _gameData;
 		_setupGrid._readCSV = _readCSV;
 		_setupGrid.objectScale = 3;
 		_setupGrid.cellSize = 16;
 		_setupGrid.getUIElements();
-		_setupGrid.makeGrid (rows,cols,"town.csv");
+		_setupGrid.makeGrid (targetLordID,doorNum,levelToLoad);
 
 //		_setupGrid._runBattle = _runBattle;
 //		_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
@@ -132,11 +166,18 @@ public class GenerateGameData : MonoBehaviour
 
 		_runOutsideOfBattle._transform = _transform;
 		_runOutsideOfBattle._gameData = _gameData;
+		_runOutsideOfBattle._generateGameData = this;
 		_runOutsideOfBattle._setupGrid = _setupGrid;
+		_runOutsideOfBattle.disabledTiles = false;
 		_runOutsideOfBattle.getUIElements();
-		_runOutsideOfBattle.targetLord = _setupGrid.putLordOnGrid(0,20,30,"south",true);
+		_runOutsideOfBattle.targetLord = _setupGrid.targetLord;
+		_runOutsideOfBattle.disableOutOfViewTiles();
 
+		loadLevel = false;
+		alreadyLoaded = true;
 	}
+
+
 
 	void checkClasses()
 	{

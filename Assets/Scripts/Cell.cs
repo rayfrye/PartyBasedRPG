@@ -26,4 +26,8 @@ public class Cell : MonoBehaviour
 	public int distanceToEnemy;
 
 	public string descText;
+
+	public string doorDest;
+	public int doorDestID;
+	public bool isDoor;
 }

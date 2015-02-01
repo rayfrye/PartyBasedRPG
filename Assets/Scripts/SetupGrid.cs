@@ -20,6 +20,8 @@ public class SetupGrid : MonoBehaviour
 	public int objectScale;
 	public int cellSize;
 
+	public GameObject targetLord;
+
 	public int[,] grid = new int[0,0];
 
 	#region UI
@@ -35,7 +37,7 @@ public class SetupGrid : MonoBehaviour
 	#endregion UI
 
 	#region Colors
-	public Color[] colors;
+	public Color32[] colors;
 	#endregion Colors
 
 	public void getUIElements()
@@ -45,13 +47,12 @@ public class SetupGrid : MonoBehaviour
 		cellContainer = GameObject.Find ("Cell Container");
 		lordContainer = GameObject.Find ("Lord Container");
 		endTurnButton = GameObject.Find ("End Turn Button");
-
-		
-		
 	}
 
-	public void makeGrid(int rows, int cols, string gridName)
+	public void makeGrid(int targetLordID, int doorID, string gridName)
 	{
+		_gameData.tiles.Clear ();
+
 		string[,] level = _readCSV.readStringMultiDimArray(gridName,@".\Assets\Levels\");
 		
 		grid = new int[level.GetLength (0),level.GetLength (1)];
@@ -100,6 +101,26 @@ public class SetupGrid : MonoBehaviour
 					newSpriteCell.descText = "";
 				}
 
+				if(level[row,col].Contains ("doorDest"))
+				{
+					newSpriteCell.doorDest = getCellValue(level[row,col],"doorDest");
+					newSpriteCell.isDoor = true;
+
+					if(level[row,col].Contains ("doorDestID"))
+					{
+						newSpriteCell.doorDestID = int.Parse (getCellValue(level[row,col],"doorDestID"));
+					}
+					else
+					{
+						newSpriteCell.doorDestID = 1;
+					}
+				}
+				else
+				{
+					newSpriteCell.doorDest = "";
+					newSpriteCell.isDoor = false;
+				}
+
 				if(level[row,col].Contains ("obj1"))
 				{
 					GameObject obj = new GameObject();
@@ -112,17 +133,37 @@ public class SetupGrid : MonoBehaviour
 						int index = int.Parse (getCellValue(level[row,col],"objIndex1"));
 						objSpriteRenderer.sprite = Resources.LoadAll<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"obj1"))[index];
 						obj.name = getCellValue(level[row,col],"obj1") + "_" + index;
+
+						if(level[row,col].Contains ("obj1FillColor"))
+						{
+							int colorID = int.Parse (getCellValue(level[row,col],"obj1FillColor"));
+							objSpriteRenderer.color = colors[colorID];
+						}
 					}
 					else
 					{
 						objSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"obj1"));
 						obj.name = getCellValue(level[row,col],"obj1");
+
+						if(level[row,col].Contains ("obj1FillColor"))
+						{
+							int colorID = int.Parse (getCellValue(level[row,col],"obj1FillColor"));
+							objSpriteRenderer.color = colors[colorID];
+						}
 					}
 
 					RectTransform objRectTransform = obj.AddComponent<RectTransform>();
 					objRectTransform.localScale = new Vector3(1,1,1);
 					objRectTransform.sizeDelta = new Vector3(cellSize,cellSize,1);
 					objRectTransform.localPosition = new Vector3(0,0,0);
+				}
+
+				if(level[row,col].Contains ("spawn"))
+				{
+					if(doorID == int.Parse (getCellValue(level[row,col],"spawn")))
+					{
+						targetLord = putLordOnGrid(targetLordID,row,col,"south",true);
+					}
 				}
 
 				if(level[row,col].Contains ("lord"))
@@ -163,6 +204,8 @@ public class SetupGrid : MonoBehaviour
 				buttonBtn.colors = tempColorBlock;
 				
 				buttonBtn.onClick.AddListener(delegate{StartCoroutine(handleClick(newSpriteCell.row,newSpriteCell.col));});
+
+				_gameData.tiles.Add (newSprite);
 			}
 		}
 
