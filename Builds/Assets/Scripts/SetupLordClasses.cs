@@ -98,5 +98,24 @@ public class SetupLordClasses : MonoBehaviour
 			//maxHealth
 			,5
 		);
+		setupClass
+		(
+			//id
+			3
+			//name
+			,"Merchant"
+			//description
+			,"Merchant placeholder desc"
+			//attack
+			,1
+			//defense
+			,1
+			//speed
+			,1
+			//attack range
+			,1
+			//maxHealth
+			,1
+		);
 	}
 }

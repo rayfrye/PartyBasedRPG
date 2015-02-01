@@ -116,7 +116,7 @@ public class GenerateGameData : MonoBehaviour
 		_setupGrid.objectScale = 3;
 		_setupGrid.cellSize = 16;
 		_setupGrid.getUIElements();
-		_setupGrid.makeGrid (rows,cols,"woodtest.csv");
+		_setupGrid.makeGrid (rows,cols,"town.csv");
 
 //		_setupGrid._runBattle = _runBattle;
 //		_setupGrid.putFactionsOnGrid(factionID1,factionID2,rows,cols);
@@ -134,7 +134,7 @@ public class GenerateGameData : MonoBehaviour
 		_runOutsideOfBattle._gameData = _gameData;
 		_runOutsideOfBattle._setupGrid = _setupGrid;
 		_runOutsideOfBattle.getUIElements();
-		_runOutsideOfBattle.targetLord = _setupGrid.putLordOnGrid(0,3,3,"south",true);
+		_runOutsideOfBattle.targetLord = _setupGrid.putLordOnGrid(0,20,30,"south",true);
 
 	}
 

@@ -84,6 +84,28 @@ public class SetupLords : MonoBehaviour
 				classID = 0;
 			}
 		}
+
+		createSpecialLords();
+	}
+
+	public void createSpecialLords()
+	{
+		setupLord
+		(
+			//id
+			1001
+			//name
+			,"Warren Moon"
+			//classid
+			//,_classes.charClasses[Random.Range (0,_classes.charClasses.Count)].id
+			,3
+			//level
+			,1
+			//exp
+			,0
+			//isAvailable
+			,false
+		);
 	}
 		
 	public void generateNames()

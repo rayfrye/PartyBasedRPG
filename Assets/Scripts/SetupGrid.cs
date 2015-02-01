@@ -106,7 +106,18 @@ public class SetupGrid : MonoBehaviour
 					obj.transform.parent = newSprite.transform;
 					SpriteRenderer objSpriteRenderer = obj.AddComponent<SpriteRenderer>();
 					objSpriteRenderer.sortingOrder = -9;
-					objSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"obj1"));
+
+					if(level[row,col].Contains ("objIndex1"))
+					{
+						int index = int.Parse (getCellValue(level[row,col],"objIndex1"));
+						objSpriteRenderer.sprite = Resources.LoadAll<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"obj1"))[index];
+						obj.name = getCellValue(level[row,col],"obj1") + "_" + index;
+					}
+					else
+					{
+						objSpriteRenderer.sprite = Resources.Load<Sprite>("Sprites/floors/"+getCellValue(level[row,col],"obj1"));
+						obj.name = getCellValue(level[row,col],"obj1");
+					}
 
 					RectTransform objRectTransform = obj.AddComponent<RectTransform>();
 					objRectTransform.localScale = new Vector3(1,1,1);

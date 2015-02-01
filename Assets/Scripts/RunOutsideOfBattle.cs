@@ -341,12 +341,12 @@ public class RunOutsideOfBattle : MonoBehaviour
 	{
 		if(currentNodeInPath < path.Count)
 		{
-			move (player,path[currentNodeInPath],2f);
+			move (player,path[currentNodeInPath],4f);
 			
-			int xDistance = (int) (player.GetComponent<RectTransform>().localPosition.x - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.x);
-			int yDistance = (int) (player.GetComponent<RectTransform>().localPosition.y - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.y);
-			
-			if(xDistance == 0 && yDistance == 0)
+			float xDistance = Mathf.Abs(player.GetComponent<RectTransform>().localPosition.x - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.x);
+			float yDistance = Mathf.Abs(player.GetComponent<RectTransform>().localPosition.y - path[currentNodeInPath].GetComponent<RectTransform>().localPosition.y);
+
+			if(xDistance <= 4f && yDistance <= 4f)
 			{
 				player.GetComponent<RectTransform>().localPosition = path[currentNodeInPath].GetComponent<RectTransform>().localPosition;
 				lordAvatar.row = path[currentNodeInPath].GetComponent<Cell>().row;
