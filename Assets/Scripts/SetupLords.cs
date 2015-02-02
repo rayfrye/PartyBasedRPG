@@ -48,12 +48,12 @@ public class SetupLords : MonoBehaviour
 		_gameData.lords.Add (id,newLord);		
 	}
 	
-	public void createLords()
+	public void createLords(int numOfLords)
 	{
 		int classID = 0;
 		
 		//		for(int i = 0; i <= numOfLords; i++)
-		for(int i = 0; i < lordNames.Count; i++)
+		for(int i = 0; i < numOfLords; i++)
 		{
 			//string lordName = lordNames[Random.Range (0,lordNames.Count)];
 			string lordName = lordNames[i];

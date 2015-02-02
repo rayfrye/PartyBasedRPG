@@ -16,14 +16,14 @@ public class SetupFactions : MonoBehaviour
 	public int numOfLordsToDraft;
 
 	public void setupFactions
-		(
-			int id
-			,string name
-			,bool isPlayerControlled
-			,List<int> draftLords
-			,int[] positions
-			,List<int> benchPositions
-			)
+	(
+		int id
+		,string name
+		,bool isPlayerControlled
+		,List<int> draftLords
+		,int[] positions
+		,List<int> benchPositions
+	)
 	{
 		Faction newFaction = gameObject.AddComponent<Faction>();
 		
@@ -53,20 +53,20 @@ public class SetupFactions : MonoBehaviour
 			}
 			
 			setupFactions
-				(
-					//id
-					i
-					//name
-					,factionName
-					//isPlayerControlled
-					,false
-					//drafted lords
-					,draftedLords
-					//positions
-					,positions
-					//bench positions
-					,benchPositions
-					);
+			(
+				//id
+				i
+				//name
+				,factionName
+				//isPlayerControlled
+				,false
+				//drafted lords
+				,draftedLords
+				//positions
+				,positions
+				//bench positions
+				,benchPositions
+			);
 		}
 		customFactions();
 	}

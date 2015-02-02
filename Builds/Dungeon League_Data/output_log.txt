@@ -12,7 +12,7 @@ Platform assembly: C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon L
 Loading C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
 Platform assembly: C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll (this message is harmless)
 Loading C:\Users\Ray\Documents\GitHub\Dungeon-League\Builds\Dungeon League_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-- Completed reload, in  0.042 seconds
+- Completed reload, in  0.045 seconds
 desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
@@ -269,7 +269,7 @@ Lord: 19
 	 speed: 1
 	 exp: 0
 	 isavailable: True
-	 factionid: 7
+	 factionid: 0
 Lord: 20
 	 id: 20
 	 name: Lorelei Stahr
@@ -533,7 +533,7 @@ Lord: 43
 	 speed: 1
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 7
 Lord: 44
 	 id: 44
 	 name: Edmund Maresca
@@ -588,7 +588,7 @@ Lord: 48
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 7
+	 factionid: 0
 Lord: 49
 	 id: 49
 	 name: Else Harryman
@@ -1105,7 +1105,7 @@ Lord: 95
 	 speed: 1
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 7
 Lord: 96
 	 id: 96
 	 name: Pennie Islam
@@ -1248,7 +1248,7 @@ Lord: 108
 	 speed: 3
 	 exp: 0
 	 isavailable: True
-	 factionid: 7
+	 factionid: 0
 Lord: 109
 	 id: 109
 	 name: Teodoro Fenton
@@ -1281,7 +1281,7 @@ Lord: 111
 	 speed: 1
 	 exp: 0
 	 isavailable: True
-	 factionid: 0
+	 factionid: 7
 Lord: 112
 	 id: 112
 	 name: Roger Nassar
@@ -1759,9 +1759,9 @@ Faction: 7
 	 name: test
 	 isPlayerControlled: False
 	 lordNames: 
-		Renato Verrett, Merchant
-		Claude Fluellen, Fighter
-		Devora Creel, Fighter
+		Rolanda Jorge, Merchant
+		Rufina Arbour, Merchant
+		Drucilla Magdaleno, Merchant
 
 UnityEngine.Debug:Internal_Log(Int32, String, Object)
 UnityEngine.Debug:Log(Object)

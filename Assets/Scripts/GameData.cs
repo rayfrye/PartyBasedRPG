@@ -37,4 +37,8 @@ public class GameData : MonoBehaviour
 	public Dictionary<int,Dialogue> dialogues = new Dictionary<int,Dialogue>();
 	#endregion dialogues
 
+	#region tiles
+	public List<GameObject> tiles = new List<GameObject>();
+	#endregion tiles
+
 }

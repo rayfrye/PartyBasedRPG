@@ -2,10 +2,10 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RunOutsideOfBattle.cs">
     <Files>
-      <File FileName="Assets\Scripts\GenerateGameData.cs" Line="174" Column="3" />
+      <File FileName="Assets\Scripts\GenerateGameData.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SetupGrid.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\SetupDialogues.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RunOutsideOfBattle.cs" Line="75" Column="4" />
+      <File FileName="Assets\Scripts\RunOutsideOfBattle.cs" Line="89" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
